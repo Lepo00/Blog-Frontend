@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import '../App.scss';
-import Post from '../models/Post';
+import '../../App.scss';
+import Post from '../../models/Post';
 
 function Home() {
     const [posts, setPosts] = useState([] as Post[]);

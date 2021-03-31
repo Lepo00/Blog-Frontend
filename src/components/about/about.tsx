@@ -1,7 +1,7 @@
-import '../App.scss';
+import '../../App.scss';
 import { useDispatch, useSelector } from 'react-redux';
-import { increment, signin, signout } from '../actions';
-import { RootState } from '../reducers';
+import { increment, signin, signout } from '../../actions';
+import { RootState } from '../../reducers';
 
 
 function About() {

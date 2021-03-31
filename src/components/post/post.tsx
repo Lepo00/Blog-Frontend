@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import Post from '../models/Post';
+import Post from '../../models/Post';
 
 
 function Posts(props: { match: { params: { id: any; }; }; }) {
