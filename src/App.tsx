@@ -1,4 +1,5 @@
 import './App.scss';
+import 'antd/dist/antd.css';
 import Contact from './components/contact/contact';
 import Home from './components/home/home';
 import About from './components/about/about';
