@@ -1,6 +1,6 @@
+import './post.scss';
 import { useEffect, useState } from 'react';
 import Post from '../../models/Post';
-
 
 function Posts(props: { match: { params: { id: any; }; }; }) {
     const [post, setPost] = useState<Post>({});

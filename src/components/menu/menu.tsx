@@ -1,8 +1,10 @@
-import { Link } from 'react-router-dom';
+import './menu.scss';
+//import { Link } from 'react-router-dom';
 import { Switch } from 'antd';
 import { useContext } from 'react';
 //@ts-ignore
 import { Theme } from "react-switch-theme";
+import { CloseOutlined, CheckOutlined } from '@ant-design/icons';
 
 function Menu() {
     // eslint-disable-next-line
@@ -11,21 +13,36 @@ function Menu() {
         toogleTheme();
     }
     return (
-            <div className="menu">
-                <h3>Logo</h3>
-                <ul className="links">
-                    <Link to="/home">
-                        <li>Home</li>
-                    </Link>
-                    <Link to="/about">
-                        <li>About</li>
-                    </Link>
-                    <Link to="/contact">
-                        <li>Contact</li>
-                    </Link>
-                    <li><Switch defaultChecked onChange={toggleTheme} /></li>
-                </ul>
-            </div>
+        <nav className="menu">
+            <ol>
+                <li className="menu-item"><a href="#0">Home</a></li>
+                <li className="menu-item"><a href="#0">About</a></li>
+                <li className="menu-item">
+                    <a href="#0">Widgets</a>
+                    <ol className="sub-menu">
+                        <li className="menu-item"><a href="#0">Big Widgets</a></li>
+                        <li className="menu-item"><a href="#0">Bigger Widgets</a></li>
+                        <li className="menu-item"><a href="#0">Huge Widgets</a></li>
+                    </ol>
+                </li>
+                <li className="menu-item">
+                    <a href="#0">Kabobs</a>
+                    <ol className="sub-menu">
+                        <li className="menu-item"><a href="#0">Shishkabobs</a></li>
+                        <li className="menu-item"><a href="#0">BBQ kabobs</a></li>
+                        <li className="menu-item"><a href="#0">Summer kabobs</a></li>
+                    </ol>
+                </li>
+                <li className="menu-item"><a href="#0">Contact</a></li>
+                <li className="menu-item">
+                    <Switch
+                        checkedChildren={<CheckOutlined />}
+                        unCheckedChildren={<CloseOutlined />}
+                        defaultChecked
+                        onChange={toggleTheme}
+                    /></li>
+            </ol>
+        </nav>
     )
 }
 export default Menu;
