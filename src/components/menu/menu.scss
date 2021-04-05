@@ -175,3 +175,10 @@ $font: var(--fontColor);
     opacity: 1;
   }
 };
+
+//icons
+.material-icons{
+  font-size: 22px;
+  line-height: 23px;
+  color: var(--fontColor);
+}

@@ -4,7 +4,6 @@ import { Switch } from 'antd';
 import { useContext } from 'react';
 //@ts-ignore
 import { Theme } from "react-switch-theme";
-import { CloseOutlined, CheckOutlined } from '@ant-design/icons';
 
 function Menu() {
     // eslint-disable-next-line
@@ -36,8 +35,12 @@ function Menu() {
                 <li className="menu-item"><a href="#0">Contact</a></li>
                 <li className="menu-item">
                     <Switch
-                        checkedChildren={<CheckOutlined />}
-                        unCheckedChildren={<CloseOutlined />}
+                        checkedChildren={
+                            <span className="material-icons">dark_mode</span>
+                        }
+                        unCheckedChildren={
+                            <span className="material-icons">light_mode</span>
+                        }
                         defaultChecked
                         onChange={toggleTheme}
                     /></li>
