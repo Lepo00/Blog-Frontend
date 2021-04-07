@@ -1,4 +1,4 @@
-import './home.scss';
+import './Home.scss';
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Post from '../../models/Post';

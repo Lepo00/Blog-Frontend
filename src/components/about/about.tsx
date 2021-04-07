@@ -1,4 +1,4 @@
-import './about.scss';
+import './About.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { increment, signin, signout } from '../../store/actions';
 import { RootState } from '../../store/reducers';

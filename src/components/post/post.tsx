@@ -1,4 +1,4 @@
-import './post.scss';
+import './Post.scss';
 import { useEffect, useState } from 'react';
 import Post from '../../models/Post';
 

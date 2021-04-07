@@ -1,4 +1,4 @@
-import './menu.scss';
+import './Menu.scss';
 //import { Link } from 'react-router-dom';
 import { Switch } from 'antd';
 import { useContext } from 'react';

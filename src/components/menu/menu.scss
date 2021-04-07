@@ -1,5 +1,5 @@
 $background: var(--color1);
-$primary: var(--color1);
+$primary: var(--fontColor);
 $secondary: var(--color2);
 $tertiary: var(--color3);
 $font: var(--fontColor);
@@ -10,23 +10,22 @@ $font: var(--fontColor);
   }
 }
 .menu {
+  width: 100%;
   background: $background;
-  height: 4rem;
-
   ol {
     list-style-type: none;
     margin: 0 auto;
     padding: 0;
+    font-size: 16px;
   }
   > ol {
-    max-width: 1000px;
-    padding: 0 2rem;
     display: flex;
-
     > .menu-item {
       flex: 1;
-      padding: 0.75rem 0;
-
+      padding: 12px 0;
+      &:hover {
+        background: $tertiary;
+      }
       &:after {
         content: '';
         position: absolute;
