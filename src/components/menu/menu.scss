@@ -4,11 +4,6 @@ $secondary: var(--color2);
 $tertiary: var(--color3);
 $font: var(--fontColor);
 
-@mixin mobile {
-  @media screen and (max-width: 600px) {
-    @content;
-  }
-}
 .menu {
   width: 100%;
   background: $background;
@@ -21,13 +16,14 @@ $font: var(--fontColor);
   > ol {
     display: flex;
     > .menu-item {
+      color: $font;
       flex: 1;
-      padding: 12px 0;
+      padding: 10px 0;
       &:hover {
         background: $tertiary;
       }
       &:after {
-        content: '';
+        content: "";
         position: absolute;
         width: 4px;
         height: 4px;
@@ -42,30 +38,32 @@ $font: var(--fontColor);
       &:hover:after {
         transform: scale(1);
       }
+      a {
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        display: block;
+        color: $font;
+      }
+    }
+    .search {
+      padding: 0;
     }
   }
   &-item {
     position: relative;
     line-height: 2.5rem;
     text-align: center;
-
-    a {
-      overflow: hidden;
-      white-space: nowrap;
-      text-overflow: ellipsis;
-      display: block;
-      color: $font;
-    }
     @at-root .sub-menu & {
-      padding: 0.75rem 0;
+      padding: 5px 0;
       background: $background;
       opacity: 0;
       transform-origin: bottom;
       animation: enter 0.2s ease forwards;
 
-      @for $n from 1 through 3 {
+      @for $n from 1 through 4 {
         &:nth-child(#{$n}) {
-          animation-duration: 0.2s + 0.1s * ($n - 1);
+          animation-duration: 0.1s + 0.1s * ($n - 1);
           animation-delay: 0.1s * ($n - 1);
         }
       }
@@ -75,63 +73,6 @@ $font: var(--fontColor);
       }
       a {
         padding: 0 0.75rem;
-      }
-      @include mobile {
-        background: $secondary;
-      }
-    }
-  }
-  @include mobile {
-    position: relative;
-
-    &:after {
-      content: '';
-      position: absolute;
-      top: calc(50% - 2px);
-      right: 1rem;
-      width: 30px;
-      height: 4px;
-      background: $font;
-      box-shadow: 0 10px $font, 0 -10px $font;
-    }
-    > ol {
-      display: none;
-      background: $background;
-      flex-direction: column;
-      justify-content: center;
-      height: 100vh;
-      animation: fade 0.2s ease-out;
-
-      > .menu-item {
-        flex: 0;
-        opacity: 0;
-        animation: enter 0.3s ease-out forwards;
-
-        @for $n from 1 through 5 {
-          &:nth-child(#{$n}) {
-            animation-delay: 0.1s * ($n - 1);
-          }
-        }
-
-        & + .menu-item {
-          margin-top: 0.75rem;
-        }
-        &:after {
-          left: auto;
-          right: 1rem;
-          bottom: calc(50% - 2px);
-        }
-        &:hover {
-          z-index: 1;
-        }
-      }
-    }
-    &:hover {
-      > ol {
-        display: flex;
-      }
-      &:after {
-        box-shadow: none;
       }
     }
   }
@@ -146,13 +87,6 @@ $font: var(--fontColor);
 
   @at-root .menu-item:hover > & {
     display: block;
-  }
-
-  @include mobile {
-    width: 100vw;
-    left: -2rem;
-    top: 50%;
-    transform: translateY(-50%);
   }
 }
 @keyframes enter {
@@ -173,11 +107,94 @@ $font: var(--fontColor);
   to {
     opacity: 1;
   }
-};
+}
+
+//toggle theme menu item
+.toggle-theme {
+  max-width: 80px;
+  background-color: transparent;
+  @media screen and (max-width: 650px) {
+    max-width: 60px;
+  }
+}
+.ant-switch-checked {
+  background-color: $secondary;
+}
+
+.ant-switch{
+  height: 27px;
+}
+
+.ant-switch-handle::before{
+  height: 18px;
+  top:3px;
+}
 
 //icons
-.material-icons{
+.material-icons {
   font-size: 22px;
-  line-height: 23px;
-  color: var(--fontColor);
+  line-height: 28px;
+  color: $font;
+}
+
+//search input
+$height:50px;
+$width:50px;
+.form {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 1s;
+  width: $height;
+  height: $width;
+  background: $font;
+  box-sizing: border-box;
+  border-radius: 25px;
+  border: 4px solid $font;
+}
+
+.input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 42.5px;
+  line-height: 30px;
+  outline: 0;
+  border: 0;
+  display: none;
+  border-radius: 20px;
+  padding: 0 10px;
+}
+
+.fa {
+  box-sizing: border-box;
+  padding: 10px;
+  width: 42.5px;
+  height: 42.5px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-radius: 50%;
+  color: $background;
+  text-align: center;
+  font-size: 1.2em;
+  transition: all 1s;
+}
+
+.form:hover {
+  width: 180px;
+  cursor: pointer;
+}
+
+.form:hover .input {
+  display: block;
+  background: $font;
+  color: $background;
+}
+
+.form:hover .fa {
+  background: $background;
+  color: $font;
 }

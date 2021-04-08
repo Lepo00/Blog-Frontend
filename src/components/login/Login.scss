@@ -1,0 +1,67 @@
+.Login {
+    color: var(--font);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    width: 500px;
+    height: 70%;
+    padding: 50px;
+    background-color: var(--color4);
+    border-radius: 20px;
+    @media only screen and (max-width: 600px) {
+        width: 80%;
+        left: 10%;
+        right: 10%;
+    }
+}
+
+.register{
+    float: left;
+    a{
+        color: var(--bg);
+        &:hover{
+            color: var(--color1);
+        }
+    }
+}
+
+.switch{
+   float: right;
+}
+
+.remember {
+    float: left;
+}
+
+.logo{
+    width: 70%;
+    margin-top: -40px;
+    border-radius: 30px;
+    background-color: var(--bg);
+}
+
+.submit{
+    background-color: var(--color2);
+    float: right;
+    width: 60%;
+    color: var(--font);
+    border: 0;
+    &:hover, &:focus{
+        background-color: var(--color2);
+        border: 2px solid var(--color3);
+        color: var(--invFont);
+    }
+}
+
+//general override ant designs
+.ant {
+    &-input-affix-wrapper {
+        border-radius: 5px;
+    }
+    &-form-item-explain-error {
+        font-size: 15px;
+    }
+}

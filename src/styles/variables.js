@@ -5,7 +5,8 @@ export const colors = {
       color2: "#64dfdf", //Medium Turquoise
       color3: "#56cfe1", //Sky Blue Crayola
       color4: "#48bfe3", //Vivid Sky Blue
-      fontColor: "#000000" //Black
+      font: "#000000", //Black
+      invFont: "#ffffff", //White
    },
    darkTheme: {
       bg: "#7400b8", //Purple
@@ -13,7 +14,8 @@ export const colors = {
       color2: "#5e60ce", //Slate Blue
       color3: "#5390d9", //Tufts Blue
       color4: "#4ea8de", //Blue Jeans
-      fontColor: "#ffffff", //White
+      font: "#ffffff", //White
+      invFont: "#000000", //Black
    },
 };
 export const activeMode = "lightTheme";

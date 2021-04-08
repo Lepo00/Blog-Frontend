@@ -6,6 +6,8 @@ import Home from './components/home/Home';
 import About from './components/about/About';
 import Menu from './components/menu/Menu';
 import Posts from './components/post/Post';
+import Login from './components/login/Login';
+import Register from './components/register/Register';
 //@ts-ignore
 import { ThemeProvider} from "react-switch-theme";
 import {colors, activeMode} from './styles/variables';
@@ -21,6 +23,8 @@ function App() {
                         <Route path="/about" component={About} />
                         <Route path="/contact" component={Contact} />
                         <Route path="/post/:id" component={Posts} />
+                        <Route path="/login" component={Login} />
+                        <Route path="/register" component={Register} />
                     </Switch>
                 </div>
             </Router>
