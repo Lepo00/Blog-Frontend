@@ -9,7 +9,7 @@ function About() {
     const logged = useSelector((state: RootState) => state.logged);
     const dispatch = useDispatch();
     return (
-        <div className="app">
+        <div className="About">
             <h1>About</h1>
             <h4>Counter: {counter}</h4>
             {logged ? <h4>Logged</h4> : <h4>Not Logged in</h4>}

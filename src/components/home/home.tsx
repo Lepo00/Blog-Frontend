@@ -2,6 +2,7 @@ import './Home.scss';
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Post from '../../models/Post';
+import Card from '../../components/ui/card/Card';
 
 function Home() {
     const [posts, setPosts] = useState([] as Post[]);
@@ -16,14 +17,26 @@ function Home() {
         setPosts(posts);
     }
 
+    const createGrid = () => {
+        let grid = []
+        let className: string;
+        for (let i = 1; i < 12; i++) {
+            grid.push(
+                //                <Link to={"post/" + i}>
+                <div className={`div${i}`} key={i}>
+                        <Card title={'Come resettare il telefono -' + i} />
+                </div>
+            )
+        }
+        return grid;
+    }
+
+
     return (
-        <div className="app">
-            <h1>Home</h1>
-            {posts.map(post => (
-                <Link to={'/post/'+post.id} key={post.id}>
-                    <h4>{post.title}</h4>
-                </Link>
-            ))}
+        <div className="Home">
+            <div className="grid-container">
+                {createGrid()}
+            </div>
         </div>
     )
 }
