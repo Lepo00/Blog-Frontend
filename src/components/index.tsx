@@ -5,6 +5,7 @@ import Menu from './menu/Menu';
 import Post from './post/Post';
 import Login from './login/Login';
 import Register from './register/Register';
+import CreatePost from './create-post/CreatePost';
 
 export {
     Contact,
@@ -13,5 +14,6 @@ export {
     Menu,
     Post,
     Login,
-    Register
+    Register,
+    CreatePost
 }
