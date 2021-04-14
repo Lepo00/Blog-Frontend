@@ -6,22 +6,11 @@
         width: 90%;
     }
 
-    input,
-    select {
-        border-radius: 5px;
-    }
-
-    .logor {
-        width: 50%;
-        margin-top: 0;
-        border-radius: 30px;
-        background-color: var(--bg);
-    }
-
     .register-form {
+        box-shadow: 5px 5px 15px -3px var(--font);
         color: var(--font);
+        background-color: var(--color2);
         z-index: 2;
-        background-color: var(--color4);
         padding: 10px 40px;
         border-radius: 20px;
         @media only screen and (max-width: 450px) {
@@ -32,6 +21,18 @@
                 margin: 0;
             }
         }
+    }
+
+    input,
+    select {
+        border-radius: 5px;
+    }
+
+    .logor {
+        width: 50%;
+        margin-top: 0;
+        border-radius: 30px;
+        background-color: var(--bg);
     }
 
     .switchr {
@@ -79,6 +80,9 @@
             background-repeat: no-repeat;
             background-position: 13px;
             background-size: 16px;
+        }
+        &-switch-checked{
+            background-color: var(--bg);
         }
     }
 }

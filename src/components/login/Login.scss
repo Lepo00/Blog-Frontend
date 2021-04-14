@@ -9,7 +9,8 @@
     width: 500px;
     height: 70%;
     padding: 50px;
-    background-color: var(--color4);
+    background-color: var(--color2);
+    box-shadow: 5px 5px 15px -3px var(--font);
     border-radius: 20px;
     @media only screen and (max-width: 600px) {
         width: 80%;
@@ -62,6 +63,9 @@
         }
         &-form-item-explain-error {
             font-size: 15px;
+        }
+        &-switch-checked{
+            background-color: var(--bg);
         }
     }
     

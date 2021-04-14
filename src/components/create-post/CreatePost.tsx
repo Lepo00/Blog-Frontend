@@ -21,57 +21,62 @@ const CreatePost = () => {
 
   return (
     <div className="CreatePost">
-      <h1>Crea un nuovo articolo</h1>
-      <Form
-        name="create-post"
-        initialValues={{}}
-        onFinish={onFinish}
-        size="large"
-      >
-        <Form.Item name="title"
-          rules={[{ required: true, message: 'il titolo è obbligatorio' }]}
+      <div className="form-create">
+        <h1>Crea un nuovo articolo</h1>
+        <Form
+          name="create-post"
+          initialValues={{}}
+          onFinish={onFinish}
+          size="large"
         >
-          <Input placeholder="Titolo" />
-        </Form.Item>
-        <Form.Item name="image" valuePropName="fileList" getValueFromEvent={normFile}>
-          <Upload maxCount={1} accept="image/png, image/jpeg" listType="picture">
-            <Button icon={<UploadOutlined />}>Seleziona l'immagine del post</Button>
-          </Upload>
-        </Form.Item>
-        <Form.Item name="categories"  
-        rules={[{ required: true, message: 'Inserisci almeno una categoria' }]}>
-          <Select
-            mode="multiple"
-            placeholder="Seleziona le categorie"
-            optionLabelProp="label"
+          <Form.Item name="title" hasFeedback
+            rules={[{ required: true, message: 'il titolo è obbligatorio' }, {
+              min: 6, message: "il titolo deve avere almeno 6 caratteri"
+            }]}
           >
-            {categories.map((category)=>(
-              <Option value={category} label={category}>
-              <div className="demo-option-label-item">{category}</div>
-            </Option>
-            ))}
-          </Select>
-        </Form.Item>
-        <Form.Item name="tags">
-          <Select mode="tags" placeholder="Tags" />
-        </Form.Item>
-        <Form.Item>
-          <TextArea placeholder="Testo" autoSize />
-        </Form.Item>
-        <Row>
-          <Form.Item name="blockComments" valuePropName="checked">
-            <Checkbox>Disattiva i commenti</Checkbox>
+            <Input placeholder="Titolo" />
           </Form.Item>
-          <Form.Item name="anonymous" valuePropName="checked">
-            <Checkbox>Articolo anonimo</Checkbox>
+          <Form.Item name="image" valuePropName="fileList" getValueFromEvent={normFile}>
+            <Upload maxCount={1} accept="image/png, image/jpeg" listType="picture">
+              <Button icon={<UploadOutlined />}>Seleziona l'immagine del post</Button>
+            </Upload>
           </Form.Item>
-        </Row>
-        <Form.Item>
-          <Button htmlType="submit">
-            Submit
-          </Button>
-        </Form.Item>
-      </Form>
+          <Form.Item name="categories" hasFeedback
+            rules={[{ required: true, message: 'Inserisci almeno una categoria' }]}>
+            <Select
+              mode="multiple"
+              placeholder="Seleziona le categorie"
+              optionLabelProp="label"
+            >
+              {categories.map((category) => (
+                <Option value={category} label={category}>
+                  <div className="demo-option-label-item">{category}</div>
+                </Option>
+              ))}
+            </Select>
+          </Form.Item>
+          <Form.Item name="tags" hasFeedback>
+            <Select mode="tags" placeholder="Tags" />
+          </Form.Item>
+          <Form.Item name="text" hasFeedback
+            rules={[{ required: true, message: 'Inserisci il testo' }, { min: 200, message: "Il testo deve avere almeno 200 caratteri" }]}>
+            <TextArea showCount allowClear minLength={200} placeholder="Testo" autoSize />
+          </Form.Item>
+          <Row>
+            <Form.Item name="blockComments" valuePropName="checked">
+              <Checkbox>Disattiva i commenti</Checkbox>
+            </Form.Item>
+            <Form.Item name="anonymous" valuePropName="checked">
+              <Checkbox>Articolo anonimo</Checkbox>
+            </Form.Item>
+          </Row>
+          <Form.Item>
+            <Button htmlType="submit">
+              Crea articolo
+            </Button>
+          </Form.Item>
+        </Form>
+      </div>
     </div>
   );
 };
