@@ -20,11 +20,12 @@ function Home() {
     const createGrid = () => {
         let grid = []
         let className: string;
-        for (let i = 1; i < 12; i++) {
+        for (let i = 1; i < 8; i++) {
             grid.push(
-                //                <Link to={"post/" + i}>
                 <div className={`div${i}`} key={i}>
+                    <Link to={"post/" + i}>
                         <Card title={'Come resettare il telefono -' + i} />
+                    </Link>
                 </div>
             )
         }
