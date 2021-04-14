@@ -1,6 +1,6 @@
 import './AuthorCard.scss';
 
-const AuthorCard = () => {
+const AuthorCard = (props:any) => {
   return (
     <div className="AuthorCard">
       <div className="photo">
