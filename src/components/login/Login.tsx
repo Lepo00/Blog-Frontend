@@ -4,16 +4,23 @@ import { Theme } from "react-switch-theme";
 import { Form, Input, Button, Checkbox, Switch } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 
 const Login = () => {
-  const onFinish = (values: { username: string, password: string, remember: boolean }) => {
+  function onFinish(values: { username: string, password: string, remember: boolean }) {
     console.log('Success:', values);
   };
   // eslint-disable-next-line
   const [theme, toogleTheme] = useContext(Theme);
   // eslint-disable-next-line
-  const [logo, setLogo] = useState('./assets/logo-dark.png');
+  const [logo, setLogo] = useState('');
+  
+  useEffect(() => {
+    if (theme === 'darkTheme')
+      setLogo('./assets/logo-light.png');
+    else
+      setLogo('./assets/logo-dark.png');
+  }, [theme])
 
   function toggleTheme() {
     toogleTheme();
