@@ -1,0 +1,29 @@
+.Post {
+    width: 100%;
+    padding: 20px;
+    color: var(--font);
+    .image {
+        width: 70%;
+        height: 80%;
+    }
+    .doc {
+        float: left;
+        width: 75%;
+        background-color: var(--invFont);
+        margin-right: 2%;
+        border-radius: 20px;
+        .text{
+            padding: 20px;
+            font-size: 15px;
+        }
+    }
+    .related {
+        height: 100%;
+        float: left;
+        width: 23%;
+        background-color: var(--invFont);
+    }
+    .title{
+        font-size: 40px;
+    }
+}

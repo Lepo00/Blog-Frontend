@@ -1,0 +1,33 @@
+.AuthorCard {
+    margin: 20px;
+    background-color: var(--color3);
+    border-radius: 20px;
+    text-align: left;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 0.4fr 1fr;
+    gap: 0;
+    grid-template-areas:
+        "photo name name name"
+        "photo description description description";
+
+    .photo {
+        grid-area: photo;
+        padding: 10px;
+        img{
+            width: 100%;
+            border-radius: 50%;
+        }
+    }
+
+    .name {
+        grid-area: name;
+        font-size: 18px;
+        margin-top: 20px;
+    }
+
+    .description {
+        font-size: 15px;
+        grid-area: description;
+    }
+}
