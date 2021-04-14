@@ -1,43 +1,44 @@
 import './Menu.scss';
-import { Link } from 'react-router-dom';
+import { NavLink, Link} from 'react-router-dom';
 import { Switch } from 'antd';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 //@ts-ignore
 import { Theme } from "react-switch-theme";
 import { useLocation } from 'react-router-dom';
 
-function Menu(props: any) {
+function Menu(props:any) {
     // eslint-disable-next-line
     const [theme, toogleTheme] = useContext(Theme);
+    const [path] = useState(useLocation().pathname);
     function toggleTheme() {
         toogleTheme();
     }
-    if (useLocation().pathname === "/login" || "/register") {
+    if (path === "/login" || path === "/register") {
         return null;
     }
     else {
         return (
             <nav className="menu">
                 <ol>
-                    <li className="menu-item"><Link to="/home">Home</Link></li>
-                    <li className="menu-item"><Link to="/About">Chi sono</Link></li>
+                    <li className="menu-item"><NavLink activeClassName="selected" to="/Home">Home</NavLink></li>
+                    <li className="menu-item"><NavLink activeClassName="selected" to="/About">Chi sono</NavLink></li>
                     <li className="menu-item">
-                        <Link to="">Categorie</Link>
+                        <Link to="/">Categorie</Link>
                         <ol className="sub-menu">
-                            <li className="menu-item"><Link to="">Smartphone</Link></li>
-                            <li className="menu-item"><Link to="">Tablet</Link></li>
-                            <li className="menu-item"><Link to="">Computer</Link></li>
-                            <li className="menu-item"><Link to="">Finanza</Link></li>
+                            <li className="menu-item"><NavLink activeClassName="selected" to="/aa">Smartphone</NavLink></li>
+                            <li className="menu-item"><NavLink activeClassName="selected" to="/bb">Tablet</NavLink></li>
+                            <li className="menu-item"><NavLink activeClassName="selected" to="/cc">Computer</NavLink></li>
+                            <li className="menu-item"><NavLink activeClassName="selected" to="/dd">Finanza</NavLink></li>
                         </ol>
                     </li>
                     <li className="menu-item">
-                        <Link to="">Kabobs</Link>
+                    <Link to="/">Kabobs</Link>
                         <ol className="sub-menu">
-                            <li className="menu-item"><Link to="">Shishkabobs</Link></li>
-                            <li className="menu-item"><Link to="">BBQ kabobs</Link></li>
+                            <li className="menu-item"><NavLink activeClassName="selected" to="/ww">Shishkabobs</NavLink></li>
+                            <li className="menu-item"><NavLink activeClassName="selected" to="/ee">BBQ kabobs</NavLink></li>
                         </ol>
                     </li>
-                    <li className="menu-item"><Link to="">Contattami</Link></li>
+                    <li className="menu-item"><NavLink activeClassName="selected" to="/contact">Contattami</NavLink></li>
                     <li className="menu-item search">
                         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossOrigin="anonymous" />
                         <form className="form">

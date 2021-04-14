@@ -1,8 +1,9 @@
 $background: var(--color1);
-$primary: var(--fontColor);
 $secondary: var(--color2);
 $tertiary: var(--color3);
-$font: var(--fontColor);
+$quaternary: var(--color4);
+$font: var(--font);
+$invFont: var(--invFont);
 
 .menu {
   width: 100%;
@@ -18,7 +19,6 @@ $font: var(--fontColor);
     > .menu-item {
       color: $font;
       flex: 1;
-      padding: 10px 0;
       &:hover {
         background: $tertiary;
       }
@@ -30,7 +30,7 @@ $font: var(--fontColor);
         border-radius: 50%;
         bottom: 5px;
         left: calc(50% - 2px);
-        background: $primary;
+        background: $font;
         will-change: transform;
         transform: scale(0);
         transition: transform 0.2s ease;
@@ -39,6 +39,7 @@ $font: var(--fontColor);
         transform: scale(1);
       }
       a {
+        padding: 10px 0;
         overflow: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;
@@ -48,6 +49,7 @@ $font: var(--fontColor);
     }
     .search {
       padding: 0;
+      max-width: auto;
     }
   }
   &-item {
@@ -121,13 +123,14 @@ $font: var(--fontColor);
   background-color: $secondary;
 }
 
-.ant-switch{
+.ant-switch {
   height: 27px;
+  margin-top: 13px;
 }
 
-.ant-switch-handle::before{
+.ant-switch-handle::before {
   height: 18px;
-  top:3px;
+  top: 3px;
 }
 
 //icons
@@ -138,8 +141,8 @@ $font: var(--fontColor);
 }
 
 //search input
-$height:50px;
-$width:50px;
+$height: 50px;
+$width: 50px;
 .form {
   position: relative;
   top: 50%;
@@ -197,4 +200,7 @@ $width:50px;
 .form:hover .fa {
   background: $background;
   color: $font;
+}
+.selected {
+  background-color: $tertiary;
 }
