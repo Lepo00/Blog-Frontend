@@ -3,8 +3,8 @@ import './Register.scss';
 import { Theme } from "react-switch-theme";
 import { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Form, Input, Checkbox, Button, AutoComplete, Switch } from 'antd';
-import { UserOutlined, LockOutlined, RedditOutlined, PhoneOutlined } from '@ant-design/icons';
+import { Form, Input, Checkbox, Button, AutoComplete, Switch, Tooltip } from 'antd';
+import { UserOutlined, LockOutlined, RedditOutlined, PhoneOutlined, QuestionCircleOutlined } from '@ant-design/icons';
 
 const Register = () => {
   const [options, setOptions] = useState<{ value: string }[]>([]);
@@ -54,7 +54,11 @@ const Register = () => {
         <Form.Item name="nickname" hasFeedback
           rules={[{ required: true, message: 'Please input your nickname!', whitespace: true }]}
         >
-          <Input placeholder="Nickname" prefix={<RedditOutlined />} />
+          <Input placeholder="Nickname" prefix={<RedditOutlined />} suffix={
+            <Tooltip title="Il nome con cui ti vedranno gli altri utenti">
+              <QuestionCircleOutlined />
+            </Tooltip>
+          } />
         </Form.Item>
         <Form.Item name="phone" hasFeedback
           rules={[{ required: true, message: 'Please input your phone number!' }]}
