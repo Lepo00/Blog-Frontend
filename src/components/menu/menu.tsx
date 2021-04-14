@@ -32,10 +32,10 @@ function Menu(props:any) {
                         </ol>
                     </li>
                     <li className="menu-item">
-                    <Link to="/">Kabobs</Link>
+                    <Link to="/">Profilo</Link>
                         <ol className="sub-menu">
-                            <li className="menu-item"><NavLink activeClassName="selected" to="/ww">Shishkabobs</NavLink></li>
-                            <li className="menu-item"><NavLink activeClassName="selected" to="/ee">BBQ kabobs</NavLink></li>
+                            <li className="menu-item"><NavLink activeClassName="selected" to="/ww">Il mio profilo</NavLink></li>
+                            <li className="menu-item"><NavLink activeClassName="selected" to="/ee">Logout</NavLink></li>
                         </ol>
                     </li>
                     <li className="menu-item"><NavLink activeClassName="selected" to="/contact">Contattami</NavLink></li>
