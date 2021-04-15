@@ -1,10 +1,10 @@
-import './Post.scss';
+import './PostDetail.scss';
 import { useState } from 'react';
 import Post from '../../models/Post';
 import AuthorCard from '../ui/authorCard/AuthorCard';
 
 
-function Posts(props: { match: { params: { id: any; }; }; }) {
+function PostDetail(props: { match: { params: { id: any; }; }; }) {
     const [post, setPost] = useState<Post>({});
 
     /*useEffect(() => {
@@ -47,4 +47,4 @@ function Posts(props: { match: { params: { id: any; }; }; }) {
     )
 }
 
-export default Posts;
+export default PostDetail;
