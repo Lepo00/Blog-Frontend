@@ -13,13 +13,14 @@ function App() {
                 <div className="app">
                     <Menu />
                     <Switch>
-                        <Route exact path={["/home", "/", "*"]} component={Home} />
+                        <Route exact path={["/home", "/"]} component={Home} />
                         <Route path="/about" component={About} />
                         <Route path="/contact" component={Contact} />
                         <Route path="/post/:id" component={PostDetail} />
                         <Route path="/login" component={Login} />
                         <Route path="/register" component={Register} />
                         <Route path="/create-post" component={CreatePost} />
+                        <Route path="*" component={Home} />
                     </Switch>
                 </div>
             </Router>
