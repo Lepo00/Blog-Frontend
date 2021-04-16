@@ -1,6 +1,6 @@
 import './ArticleDetail.scss';
 import { useState } from 'react';
-import Post from '../../models/Post';
+import Post from '../../models/Article';
 import AuthorCard from '../ui/authorCard/AuthorCard';
 
 

@@ -1,11 +1,11 @@
 import './Home.scss';
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import Post from '../../models/Post';
+import Article from '../../models/Article';
 import Card from '../../components/ui/card/Card';
 
 function Home() {
-    const [posts, setPosts] = useState([] as Post[]);
+    const [posts, setPosts] = useState([] as Article[]);
 
     useEffect(() => {
         fetchPosts();

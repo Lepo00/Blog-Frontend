@@ -1,5 +1,5 @@
 import AuditModel from "./AuditModel";
-import Post from "./Post";
+import Article from "./Article";
 
 export default interface User extends AuditModel{
     username?: string,
@@ -10,5 +10,5 @@ export default interface User extends AuditModel{
     phone?:string,
     photo?:string,
     role?:string,
-    articles?:Post[];
+    articles?:Article[];
 }

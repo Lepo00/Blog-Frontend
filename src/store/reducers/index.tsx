@@ -1,5 +1,5 @@
-import CounterReducer from './counter';
-import LoggedReducer from './logged';
+import CounterReducer from './counterReducers';
+import LoggedReducer from './loggedReducers';
 import {combineReducers} from 'redux';
 
 export const rootReducer = combineReducers({
