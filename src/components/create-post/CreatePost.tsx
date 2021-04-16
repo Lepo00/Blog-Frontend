@@ -1,6 +1,6 @@
 import './CreatePost.scss';
 import { useState } from 'react';
-import { Form, Input, Button, Checkbox, Select, Upload, Row } from 'antd';
+import { Form, Input, Button, Checkbox, Select, Upload, Row, Col } from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
 const { TextArea } = Input;
 const { Option } = Select;
@@ -41,25 +41,31 @@ const CreatePost = () => {
               <Button icon={<UploadOutlined />}>Seleziona l'immagine del post</Button>
             </Upload>
           </Form.Item>
-          <Form.Item name="categories" hasFeedback
-            rules={[{ required: true, message: 'Inserisci almeno una categoria' }]}>
-            <Select
-              mode="multiple"
-              placeholder="Seleziona le categorie"
-              optionLabelProp="label"
-            >
-              {categories.map((category) => (
-                <Option value={category} label={category}>
-                  <div className="demo-option-label-item">{category}</div>
-                </Option>
-              ))}
-            </Select>
-          </Form.Item>
-          <Form.Item name="tags" hasFeedback>
-            <Select mode="tags" placeholder="Tags" />
-          </Form.Item>
+          <Row>
+            <Col span={12}>
+              <Form.Item name="categories" hasFeedback
+                rules={[{ required: true, message: 'Inserisci almeno una categoria' }]}>
+                <Select
+                  mode="multiple"
+                  placeholder="Seleziona le categorie"
+                  optionLabelProp="label"
+                >
+                  {categories.map((category) => (
+                    <Option value={category} label={category}>
+                      <div className="demo-option-label-item">{category}</div>
+                    </Option>
+                  ))}
+                </Select>
+              </Form.Item>
+            </Col>
+            <Col span={12}>
+            <Form.Item name="tags" hasFeedback>
+              <Select mode="tags" placeholder="Tags" />
+            </Form.Item>
+            </Col>
+          </Row>
           <Form.Item name="text" hasFeedback
-            rules={[{ required: true, message: 'Inserisci il testo' }, { min: 200, message: "Il testo deve avere almeno 200 caratteri" }]}>
+            rules={[{ required: true, message: 'Inserisci il testo' }, { min: 200, message: "" }]}>
             <TextArea showCount allowClear minLength={200} placeholder="Testo" autoSize />
           </Form.Item>
           <Row>

@@ -6,6 +6,7 @@ import PostDetail from './post-detail/PostDetail';
 import Login from './login/Login';
 import Register from './register/Register';
 import CreatePost from './create-post/CreatePost';
+import MyPosts from './my-posts/MyPosts';
 
 export {
     Contact,
@@ -15,5 +16,6 @@ export {
     PostDetail,
     Login,
     Register,
-    CreatePost
+    CreatePost,
+    MyPosts
 }

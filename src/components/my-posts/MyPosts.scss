@@ -1,0 +1,67 @@
+.MyPosts {
+    background-color: var(--bg);
+    min-height: 90vh;
+    position: absolute;
+    padding-top: 10px;
+    @media only screen and (max-width: 1010px) {
+        .ant-btn-icon-only.ant-btn-lg,
+        .ant-btn-circle.ant-btn-lg {
+            min-width: unset;
+            width: 30px;
+            height: 30px;
+        }
+        .grid-container {
+            grid-template-columns: 0.2fr 1fr 0.3fr;
+        }
+    }
+    h1 {
+        font-size: 30px;
+    }
+    .grid-container {
+        display: grid;
+        grid-template-columns: 0.2fr 1fr 0.25fr;
+        grid-template-rows: 70px;
+        grid-template-areas: "image title buttons";
+        margin: 15px 10%;
+        background-color: var(--invFont);
+        border-radius: 10px;
+    }
+    .title,
+    .buttons {
+        line-height: 70px;
+        overflow: hidden;
+    }
+
+    .image {
+        grid-area: image;
+        img {
+            width: 100%;
+            height: 100%;
+            padding: 2%;
+        }
+    }
+
+    .title {
+        grid-area: title;
+    }
+
+    .buttons {
+        grid-area: buttons;
+        button {
+            margin: 0 2%;
+        }
+    }
+    .ant {
+        &-btn-icon-only.ant-btn-lg {
+            padding: 0;
+            font-size: 0;
+        }
+        &-pagination {
+            margin: 20px auto;
+            font-size: 20px;
+        }
+        &-select-selection-item {
+            font-size: 20px;
+        }
+    }
+}
