@@ -1,5 +1,5 @@
 import Post from '../../models/Post';
-import './MyPosts.scss';
+import './MyArticles.scss';
 import { Button, Tooltip, Pagination } from 'antd';
 import { DeleteOutlined, SearchOutlined, FormOutlined } from '@ant-design/icons';
 

@@ -1,7 +1,7 @@
 import './App.scss';
 import 'antd/dist/antd.css';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import { About, Contact, Home, Menu, PostDetail, Login, Register, CreatePost, MyPosts } from './components';
+import { About, Contact, Home, Menu, PostDetail, Login, Register, CreateArticle, MyArticles } from './components';
 //@ts-ignore
 import { ThemeProvider } from "react-switch-theme";
 import { colors, activeMode } from './styles/variables';
@@ -19,8 +19,8 @@ function App() {
                         <Route path="/post/:id" component={PostDetail} />
                         <Route path="/login" component={Login} />
                         <Route path="/register" component={Register} />
-                        <Route path="/create-post" component={CreatePost} />
-                        <Route path="/my-posts" component={MyPosts} />
+                        <Route path="/create-article" component={CreateArticle} />
+                        <Route path="/my-articles" component={MyArticles} />
                         <Route path="*" component={Home} />
                     </Switch>
                 </div>

@@ -1,4 +1,4 @@
-import './CreatePost.scss';
+import './CreateArticle.scss';
 import { useState } from 'react';
 import { Form, Input, Button, Checkbox, Select, Upload, Row, Col } from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
