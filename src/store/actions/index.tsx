@@ -1,2 +1,2 @@
-export {signin,signout} from './user';
-export {increment} from './counter';
+export {signin,signout} from './userActions';
+export {increment} from './counterActions';
