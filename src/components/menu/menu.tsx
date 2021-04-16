@@ -10,9 +10,6 @@ function Menu(props: any) {
     // eslint-disable-next-line
     const [theme, toogleTheme] = useContext(Theme);
     const [path] = useState(useLocation().pathname);
-    function toggleTheme() {
-        toogleTheme();
-    }
     if (path === "/login" || path === "/register") {
         return null;
     }
@@ -61,7 +58,7 @@ function Menu(props: any) {
                                 <span className="material-icons">light_mode</span>
                             }
                             defaultChecked
-                            onChange={toggleTheme}
+                            onChange={toogleTheme}
                         /></li>
                 </ol>
             </nav >
