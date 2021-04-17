@@ -8,34 +8,34 @@ import { RootState } from '../../store/reducers';
 
 
 const MyPosts = () => {
-  const dispatch=useDispatch();
+  const dispatch = useDispatch();
   useEffect(() => { dispatch(getArticles()) }, [dispatch]);
 
   const articles = useSelector((state: RootState) => state.articleReducers).articles;
-  
+
   return (
     <div className="MyPosts">
       <h1>I miei articoli</h1>
-      {articles.map((article) => (
-        <div className="grid-container">
-          <div className="image"><img src="../assets/wallpaper.jpg" alt="" /></div>
-          <div className="title"><h2>{article.title}</h2></div>
-          <div className="buttons">
-            <Tooltip title="Dettaglio articolo">
-              <Button shape="circle" size="large" icon={<SearchOutlined />} />
-            </Tooltip>
-            <Tooltip title="Modifica Articolo">
-              <Button type="primary" shape="circle" size="large" icon={<FormOutlined />} />
-            </Tooltip>
-            <Tooltip title="Elimina articolo" color="red">
-              <Button type="primary" color="red" danger shape="circle" size="large" icon={<DeleteOutlined />} />
-            </Tooltip>
+        {articles.map((article, index) => (
+          <div className="grid-container" key={index}>
+            <div className="image"><img src="../assets/wallpaper.jpg" alt="" /></div>
+            <div className="title"><h2>{article.title}</h2></div>
+            <div className="buttons">
+              <Tooltip title="Dettaglio articolo">
+                <Button shape="circle" size="large" icon={<SearchOutlined />} />
+              </Tooltip>
+              <Tooltip title="Modifica Articolo">
+                <Button type="primary" shape="circle" size="large" icon={<FormOutlined />} />
+              </Tooltip>
+              <Tooltip title="Elimina articolo" color="red">
+                <Button type="primary" color="red" danger shape="circle" size="large" icon={<DeleteOutlined />} />
+              </Tooltip>
+            </div>
           </div>
-        </div>
-      ))}
+        ))}
       <Pagination total={50} showSizeChanger
         showTotal={(total, range) => `${range[0]}-${range[1]} di ${total} articoli`}
-        pageSizeOptions={['5','10','15','20']} />
+        pageSizeOptions={['5', '10', '15', '20']} />
     </div>
   )
 }
