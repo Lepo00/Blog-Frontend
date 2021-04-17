@@ -22,15 +22,15 @@ function Home() {
                 </div>
             )
         }*/
-        articles.reverse().map((article,i)=>{
+        articles.map((article,i)=>(
             grid.push(
-                <div className={`div${i+1}`} key={i+1}>
-                    <Link to={"article/" + i+1}>
+                <div className={`div${(i+1)}`} key={(i+1)}>
+                    <Link to={"article/" + (i+1)}>
                         <Card title={article.title!} />
                     </Link>
                 </div>
             )
-        })
+        ))
         return grid;
     }
 
