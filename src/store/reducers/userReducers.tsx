@@ -1,13 +1,12 @@
 const initialState = false;
 
-const LoggedReducer = (state = initialState, action: { type: string; payload:boolean }) => {
+const LoggedReducer = (state = initialState, action: { type: string; payload: boolean }) => {
+    console.log("reducer")
     switch (action.type) {
-        case 'SIGNIN':
-            return true;
-        case 'SIGNOUT':
-            return false;
         case 'LOGIN':
-            return action.payload
+            return action.payload;
+        case 'LOGOUT':
+            return false;
         default:
             return state
     }

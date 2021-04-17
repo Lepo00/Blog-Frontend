@@ -1,25 +1,31 @@
 import './Login.scss';
+import { useContext} from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../../store/reducers';
+import { Link } from 'react-router-dom';
 import { Theme } from "react-switch-theme";
 import { Form, Input, Button, Checkbox, Switch } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
-import { Link } from 'react-router-dom';
-import { useContext} from 'react';
+import { login } from '../../store/actions/userActions';
 
 const Login = () => {
+  const dispatch = useDispatch();
   const [theme, toggleTheme] = useContext(Theme);
+  const logged = useSelector((state: RootState) => state.userReducers);
 
-  function onFinish(values: { username: string, password: string, remember: boolean }) {
-    console.log('Success:', values);
+  function Login(values: { username: string, password: string, remember: boolean }) {
+    dispatch(login(values));
   };
   return (
     <div className="Login">
       <img src={theme==="darkTheme"? "./assets/logo-light.png":"./assets/logo-dark.png"} className="logo" alt=""/>
-      <h1>Login</h1>
+      {/*<h1>Login</h1>*/}
+      <h1>{logged? "loggato": "non loggato"}</h1>
       <Form
         size="large"
         name="login"
         initialValues={{ remember: false }}
-        onFinish={onFinish}
+        onFinish={Login}
       >
         <Form.Item name="username" hasFeedback
           rules={[{ required: true, message: 'Username obbligatorio!' }]}
