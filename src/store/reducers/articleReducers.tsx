@@ -1,20 +1,19 @@
-import Article from "../../models/Article"
+import Article from "../../models/Article";
 
-const initialState = {
-    articles: [],
+const initialState:{articles:Article[], loading: boolean} = {
+    articles: [] as Article[],
     loading: true
 }
-interface Action {
-    type: string;
-    payload: { articles: Article[] }
-}
 
-export default function (state = initialState, action: Action) {
+interface Action{ type: string; payload:Article[]}; 
+
+const articleReducer = (state = initialState, action: Action )=> {
     switch (action.type) {
         case "GET_ARTICLES":
             return {
-                ...state, articles: action.payload, loading: false
+                articles: action.payload, loading: false
             }
         default: return state
     }
 }
+export default articleReducer;

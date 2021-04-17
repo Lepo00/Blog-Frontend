@@ -1,26 +1,14 @@
 import './ArticleDetail.scss';
-import { useState } from 'react';
-import Post from '../../models/Article';
 import AuthorCard from '../ui/authorCard/AuthorCard';
 
 
-function PostDetail(props: { match: { params: { id: any; }; }; }) {
-    const [post, setPost] = useState<Post>({});
-
-    /*useEffect(() => {
-        const fetchPost = async () => {
-            const id = props.match.params.id;
-            const post = await (await fetch('https://jsonplaceholder.typicode.com/posts/' + id)).json();
-            setPost(post);
-        }
-        fetchPost();
-    }, [props]);*/
+function PostDetail(/*props: { match: { params: { id: any; }; }; }*/) {
 
     return (
         <div className="Post">
             <div className="container">
                 <div className="doc">
-                    <h1 className="title">Lorem Ipsumm</h1>
+                    <h1 className="title">Lorem Ipsum</h1>
                     <img src="../assets/wallpaper.jpg" alt="" className="image" />
                     <p className="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam elementum ligula in sapien varius, nec rutrum dui bibendum. Donec bibendum lacinia lacus, non commodo nunc vestibulum aliquet. Sed porttitor orci ac est tempor, quis bibendum massa blandit. Phasellus ac gravida arcu. Pellentesque efficitur mollis felis eu venenatis. Ut efficitur ligula id tempus laoreet. Ut nec laoreet dui, vehicula commodo ipsum.
                     Nullam vitae feugiat neque, vel suscipit sem. Nullam at quam a magna tristique pulvinar vel at odio. In id lobortis lectus. Integer quis consectetur mauris. Cras sed urna non orci congue mattis. Quisque eget ex sed neque efficitur dapibus eu ac elit. Sed lacinia lectus in lobortis viverra. Suspendisse viverra sapien ac tellus ullamcorper, elementum semper augue molestie. Pellentesque sed enim sit amet lacus dignissim porta eu non libero. Morbi ac urna eget nunc ornare volutpat. Morbi lobortis maximus sapien, id ultricies libero pellentesque id. Morbi finibus, felis eget egestas tempor, dui risus tempus magna, vel cursus diam lorem eget lectus.

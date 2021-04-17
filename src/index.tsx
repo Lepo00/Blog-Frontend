@@ -1,15 +1,12 @@
-import ReactDOM from 'react-dom';
 import './index.scss';
+import ReactDOM from 'react-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { createStore } from 'redux';
 import { Provider } from 'react-redux';
-import {rootReducer} from './store/reducers';
-
-//const store = createStore(rootReducer);
+import store from './store/store'
 
 ReactDOM.render(
-    <Provider store={createStore(rootReducer)}>
+    <Provider store={store}>
       <App />
     </Provider>,
   document.getElementById('root')

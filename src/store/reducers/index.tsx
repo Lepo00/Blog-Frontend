@@ -1,10 +1,12 @@
-import CounterReducer from './counterReducers';
-import LoggedReducer from './loggedReducers';
+import counterReducers from './counterReducers';
+import userReducers from './userReducers';
+import articleReducers from './articleReducers';
 import {combineReducers} from 'redux';
 
 export const rootReducer = combineReducers({
-    counter: CounterReducer,
-    logged: LoggedReducer,
+    counterReducers,
+    userReducers,
+    articleReducers
 })
 
 export type RootState = ReturnType<typeof rootReducer>
