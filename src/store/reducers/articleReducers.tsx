@@ -13,6 +13,10 @@ const articleReducer = (state = initialState, action: Action )=> {
             return {
                 articles: action.payload, loading: false
             }
+        case "FIRST_ARTICLES":
+            return {
+                articles: action.payload, loading: false
+            }
         default: return state
     }
 }

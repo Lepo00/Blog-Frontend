@@ -8,7 +8,7 @@ interface customUser {
 
 export const login = (user: customUser) => async (dispatch: (actions: { type: string; payload: any; }) => void) => {
     try {
-        const res = await axios.post('auth/token', user);
+        const res = await axios.post('/auth/token', user);
         dispatch({
             type: "LOGIN",
             payload: res.status === 200
