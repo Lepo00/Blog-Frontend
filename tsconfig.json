@@ -22,5 +22,5 @@
   },
   "include": [
     "src"
-  ]
+, "react-switch-theme.d.ts"  ]
 }

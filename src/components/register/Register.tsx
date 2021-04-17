@@ -1,31 +1,14 @@
 import './Register.scss';
-//@ts-ignore
 import { Theme } from "react-switch-theme";
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Form, Input, Checkbox, Button, AutoComplete, Switch, Tooltip } from 'antd';
 import { UserOutlined, LockOutlined, RedditOutlined, PhoneOutlined, QuestionCircleOutlined } from '@ant-design/icons';
 
 const Register = () => {
   const [options, setOptions] = useState<{ value: string }[]>([]);
-  // eslint-disable-next-line
-  const [theme, toogleTheme] = useContext(Theme);
-  // eslint-disable-next-line
-  const [logo, setLogo] = useState('');
-  useEffect(() => {
-    if (theme === 'darkTheme')
-      setLogo('./assets/logo-light.png');
-    else
-      setLogo('./assets/logo-dark.png');
-  }, [theme]);
+  const [theme, toggleTheme] = useContext(Theme);
 
-  function toggleTheme() {
-    toogleTheme();
-    if (logo === './assets/logo-light.png')
-      setLogo('./assets/logo-dark.png');
-    else
-      setLogo('./assets/logo-light.png');
-  }
   function onFinish(values: any) {
     console.log('okkkk', values);
   }
@@ -38,7 +21,7 @@ const Register = () => {
   return (
     <div className="Register">
       <Form name="register" onFinish={onFinish} scrollToFirstError size="large" className="register-form">
-        <img src={logo} alt="" className="logor" />
+        <img src={theme==="darkTheme"? "./assets/logo-light.png":"./assets/logo-dark.png"} className="logor" alt=""/>
         <h1>Registrazione</h1>
         <Form.Item name="fullName" hasFeedback
           rules={[{ required: true, message: 'Please input your nickname!' }]}

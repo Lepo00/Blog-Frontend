@@ -2,7 +2,6 @@ import './App.scss';
 import 'antd/dist/antd.css';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { About, Contact, Home, Menu, PostDetail, Login, Register, CreateArticle, MyArticles } from './components';
-//@ts-ignore
 import { ThemeProvider } from "react-switch-theme";
 import { colors, activeMode } from './styles/variables';
 

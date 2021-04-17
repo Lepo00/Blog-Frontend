@@ -2,7 +2,6 @@ import './Menu.scss';
 import { NavLink, Link } from 'react-router-dom';
 import { Switch } from 'antd';
 import { useContext, useState } from 'react';
-//@ts-ignore
 import { Theme } from "react-switch-theme";
 import { useLocation } from 'react-router-dom';
 
@@ -31,8 +30,8 @@ function Menu(props: any) {
                     <li className="menu-item">
                         <Link to="/">Articoli</Link>
                         <ol className="sub-menu">
-                            <li className="menu-item"><Link to="/create-post">Crea nuovo articolo</Link></li>
-                            <li className="menu-item"><Link to="/my-posts">Gestisci i miei articoli</Link></li>
+                            <li className="menu-item"><Link to="/create-article">Crea nuovo articolo</Link></li>
+                            <li className="menu-item"><Link to="/my-articles">Gestisci i miei articoli</Link></li>
                         </ol>
                     </li>
                     <li className="menu-item">

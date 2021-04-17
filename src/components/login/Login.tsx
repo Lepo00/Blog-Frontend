@@ -1,37 +1,19 @@
 import './Login.scss';
-//@ts-ignore
-import { Theme } from "react-switch-theme";
+import { Theme } from "react-switch-theme";a
 import { Form, Input, Button, Checkbox, Switch } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
-import { useContext, useEffect, useState } from 'react';
+import { useContext} from 'react';
 
 const Login = () => {
+  const [theme, toggleTheme] = useContext(Theme);
+
   function onFinish(values: { username: string, password: string, remember: boolean }) {
     console.log('Success:', values);
   };
-  // eslint-disable-next-line
-  const [theme, toogleTheme] = useContext(Theme);
-  // eslint-disable-next-line
-  const [logo, setLogo] = useState('');
-  
-  useEffect(() => {
-    if (theme === 'darkTheme')
-      setLogo('./assets/logo-light.png');
-    else
-      setLogo('./assets/logo-dark.png');
-  }, [theme])
-
-  function toggleTheme() {
-    toogleTheme();
-    if(logo==='./assets/logo-light.png')
-      setLogo('./assets/logo-dark.png');
-    else
-      setLogo('./assets/logo-light.png');
-  }
   return (
     <div className="Login">
-      <img src={logo} alt="" className="logo" />
+      <img src={theme==="darkTheme"? "./assets/logo-light.png":"./assets/logo-dark.png"} className="logo" alt=""/>
       <h1>Login</h1>
       <Form
         size="large"
