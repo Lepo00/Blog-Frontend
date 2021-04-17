@@ -1,5 +1,5 @@
 import './Login.scss';
-import { Theme } from "react-switch-theme";a
+import { Theme } from "react-switch-theme";
 import { Form, Input, Button, Checkbox, Switch } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
