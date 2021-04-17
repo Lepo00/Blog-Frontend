@@ -3,6 +3,7 @@
     min-height: 90vh;
     position: absolute;
     padding-top: 10px;
+    color: var(--font);
     @media only screen and (max-width: 1010px) {
         .ant-btn-icon-only.ant-btn-lg,
         .ant-btn-circle.ant-btn-lg {
@@ -59,9 +60,29 @@
         &-pagination {
             margin: 20px auto;
             font-size: 20px;
+            color: var(--font);
+            &-item {
+                background-color: var(--invFont);
+                &-active {
+                    border: 2px solid var(--font);
+                }
+                &-link{
+                    background-color: var(--invFont);
+                    color: var(--font);
+                }
+                a {
+                    color: var(--font);
+                }
+            }
         }
-        &-select-selection-item {
-            font-size: 20px;
+        &-select {
+            &-selection-item {
+                font-size: 20px;
+            }
+            &-selector{
+                background-color: var(--invFont) !important;
+                color: var(--font);
+            }
         }
     }
 }
