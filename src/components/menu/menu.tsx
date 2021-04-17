@@ -21,10 +21,10 @@ function Menu(props: any) {
                     <li className="menu-item">
                         <Link to="/">Categorie</Link>
                         <ol className="sub-menu">
-                            <li className="menu-item"><NavLink activeClassName="selected" to="/aa">Smartphone</NavLink></li>
-                            <li className="menu-item"><NavLink activeClassName="selected" to="/bb">Tablet</NavLink></li>
-                            <li className="menu-item"><NavLink activeClassName="selected" to="/cc">Computer</NavLink></li>
-                            <li className="menu-item"><NavLink activeClassName="selected" to="/dd">Finanza</NavLink></li>
+                            <li className="menu-item"><Link to="/aa">Smartphone</Link></li>
+                            <li className="menu-item"><Link to="/bb">Tablet</Link></li>
+                            <li className="menu-item"><Link to="/cc">Computer</Link></li>
+                            <li className="menu-item"><Link to="/dd">Finanza</Link></li>
                         </ol>
                     </li>
                     <li className="menu-item">
@@ -37,8 +37,8 @@ function Menu(props: any) {
                     <li className="menu-item">
                         <Link to="/">Profilo</Link>
                         <ol className="sub-menu">
-                            <li className="menu-item"><NavLink activeClassName="selected" to="/ww">Il mio profilo</NavLink></li>
-                            <li className="menu-item"><NavLink activeClassName="selected" to="/ee">Logout</NavLink></li>
+                            <li className="menu-item"><Link to="/ww">Il mio profilo</Link></li>
+                            <li className="menu-item"><Link to="/aa">Logout</Link></li>
                         </ol>
                     </li>
                     <li className="menu-item search">
@@ -60,7 +60,7 @@ function Menu(props: any) {
                             onChange={toogleTheme}
                         /></li>
                 </ol>
-            </nav >
+            </nav>
         )
     }
 }
