@@ -1,12 +1,12 @@
-import { Action, Article} from "../../models";
+import { Action, Article } from "../../models";
 
-const initialState:{articles:Article[], loading: boolean, detail: Article} = {
+const initialState: { articles: Article[], loading: boolean, detail: Article } = {
     articles: [],
     loading: true,
     detail: {}
 }
 
-const articleReducer = (state = initialState, action: Action )=> {
+const articleReducer = (state = initialState, action: Action) => {
     switch (action.type) {
         case "GET_ARTICLES":
             return {
@@ -21,10 +21,16 @@ const articleReducer = (state = initialState, action: Action )=> {
                 loading: false
             }
         case "DETAIL_ARTICLE":
-            return{
+            return {
                 ...state,
                 detail: action.payload,
-                loading:false
+                loading: false
+            }
+        case "CREATE_ARTICLE":
+            return {
+                ...state,
+                detail: action.payload,
+                loading: false
             }
         default: return state
     }

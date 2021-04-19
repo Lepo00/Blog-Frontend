@@ -4,9 +4,9 @@ import { Switch } from 'antd';
 import { useContext, useState } from 'react';
 import { Theme } from "react-switch-theme";
 import { useLocation } from 'react-router-dom';
+import {categories} from '../../models/Categories';
 
 function Menu(props: any) {
-    const [categories] = useState(['Finanza', 'Recensioni', 'Scienza', 'Sicurezza']);
     // eslint-disable-next-line
     const [theme, toogleTheme] = useContext(Theme);
     const [path] = useState(useLocation().pathname);
@@ -23,7 +23,7 @@ function Menu(props: any) {
                         <Link to="/">Categorie</Link>
                         <ol className="sub-menu">
                             {categories.map((category,i)=>(
-                                <li className="menu-item" key={i}><Link to={"/category/"+category}>{category}</Link></li>
+                                <li className="menu-item" key={i}><Link to={"/category/"+category.name}>{category.name}</Link></li>
                             ))}
                         </ol>
                     </li>

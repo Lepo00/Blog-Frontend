@@ -2,21 +2,25 @@ import './CreateArticle.scss';
 import { useState } from 'react';
 import { Form, Input, Button, Checkbox, Select, Upload, Row, Col } from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
+import { useDispatch } from 'react-redux';
+import { createArticle } from '../../store/actions';
+import { Article } from '../../models';
+import { categories } from '../../models/Categories';
 const { TextArea } = Input;
 const { Option } = Select;
 
 const CreateArticle = () => {
-  const [categories] = useState(['Finanza', 'Recensioni', 'Scienza', 'Sicurezza']);
-  const onFinish = (values: any) => {
-    console.log('Success:', values);
-  };
+  const dispatch = useDispatch();
 
-  const normFile = (e: any) => {
-    console.log('Upload event:', e);
-    if (Array.isArray(e)) {
-      return e;
-    }
-    return e && e.fileList;
+  const create = (values: Article) => {
+    const article: Article = {
+      "title":values.title,
+      "text":values.text,
+      "categories":values.categories,
+      "tags":values.tags,
+  };
+    console.log(article);
+    //dispatch(createArticle(values));
   };
 
   return (
@@ -24,9 +28,11 @@ const CreateArticle = () => {
       <div className="form-create">
         <h1>Crea un nuovo articolo</h1>
         <Form
+          method="POST"
+          encType="multipart/form-data"
           name="create-post"
-          onFinish={onFinish}
-          initialValues={{ "anonymous": false,"blockComments": false }}
+          onFinish={create}
+          initialValues={{ "anonymous": false, "blockComments": false, "image": null }}
           size="large"
         >
           <Form.Item name="title" hasFeedback
@@ -36,8 +42,8 @@ const CreateArticle = () => {
           >
             <Input placeholder="Titolo" />
           </Form.Item>
-          <Form.Item name="image" valuePropName="fileList" getValueFromEvent={normFile}>
-            <Upload maxCount={1} accept="image/png, image/jpeg" listType="picture">
+          <Form.Item name="image" valuePropName="ciao">
+            <Upload maxCount={1} accept="image/png, image/jpeg" listType="picture" beforeUpload={() => false}>
               <Button icon={<UploadOutlined />}>Seleziona l'immagine del post</Button>
             </Upload>
           </Form.Item>
@@ -46,12 +52,15 @@ const CreateArticle = () => {
               <Form.Item name="categories" hasFeedback
                 rules={[{ required: true, message: 'Inserisci almeno una categoria' }]}>
                 <Select
+                  mode="multiple"
+                  maxLength={2}
+                  allowClear
                   placeholder="Seleziona le categorie"
                   optionLabelProp="label"
                 >
-                  {categories.map((category,i) => (
-                    <Option value={category} label={category} key={i}>
-                      <div className="demo-option-label-item">{category}</div>
+                  {categories.map((category, i) => (
+                    <Option value={category.value} label={category.name} key={i}>
+                      <div className="demo-option-label-item">{category.name}</div>
                     </Option>
                   ))}
                 </Select>
@@ -59,7 +68,7 @@ const CreateArticle = () => {
             </Col>
             <Col span={12}>
               <Form.Item name="tags" hasFeedback>
-                <Select mode="tags" placeholder="Tags" />
+                <Select maxTagCount={6} allowClear mode="tags" placeholder="Tags" />
               </Form.Item>
             </Col>
           </Row>
