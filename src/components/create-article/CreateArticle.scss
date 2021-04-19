@@ -9,6 +9,9 @@
         width: 800px;
         margin: 0 auto;
         background-color: var(--invFont);
+        @media only screen and (max-width: 830px) {
+            width: 95%;
+        }
         .upload {
             width: 100%;
         }

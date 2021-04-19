@@ -6,6 +6,7 @@ import { Theme } from "react-switch-theme";
 import { useLocation } from 'react-router-dom';
 
 function Menu(props: any) {
+    const [categories] = useState(['Finanza', 'Recensioni', 'Scienza', 'Sicurezza']);
     // eslint-disable-next-line
     const [theme, toogleTheme] = useContext(Theme);
     const [path] = useState(useLocation().pathname);
@@ -21,10 +22,9 @@ function Menu(props: any) {
                     <li className="menu-item">
                         <Link to="/">Categorie</Link>
                         <ol className="sub-menu">
-                            <li className="menu-item"><Link to="/aa">Smartphone</Link></li>
-                            <li className="menu-item"><Link to="/bb">Tablet</Link></li>
-                            <li className="menu-item"><Link to="/cc">Computer</Link></li>
-                            <li className="menu-item"><Link to="/dd">Finanza</Link></li>
+                            {categories.map((category,i)=>(
+                                <li className="menu-item" key={i}><Link to={"/category/"+category}>{category}</Link></li>
+                            ))}
                         </ol>
                     </li>
                     <li className="menu-item">

@@ -5,8 +5,8 @@ import { UploadOutlined } from '@ant-design/icons';
 const { TextArea } = Input;
 const { Option } = Select;
 
-const CreatePost = () => {
-  const [categories] = useState(['Smartphone', 'Tablet', 'Computer', 'Tecnologia']);
+const CreateArticle = () => {
+  const [categories] = useState(['Finanza', 'Recensioni', 'Scienza', 'Sicurezza']);
   const onFinish = (values: any) => {
     console.log('Success:', values);
   };
@@ -25,8 +25,8 @@ const CreatePost = () => {
         <h1>Crea un nuovo articolo</h1>
         <Form
           name="create-post"
-          initialValues={{}}
           onFinish={onFinish}
+          initialValues={{ "anonymous": false,"blockComments": false }}
           size="large"
         >
           <Form.Item name="title" hasFeedback
@@ -46,12 +46,11 @@ const CreatePost = () => {
               <Form.Item name="categories" hasFeedback
                 rules={[{ required: true, message: 'Inserisci almeno una categoria' }]}>
                 <Select
-                  mode="multiple"
                   placeholder="Seleziona le categorie"
                   optionLabelProp="label"
                 >
-                  {categories.map((category) => (
-                    <Option value={category} label={category}>
+                  {categories.map((category,i) => (
+                    <Option value={category} label={category} key={i}>
                       <div className="demo-option-label-item">{category}</div>
                     </Option>
                   ))}
@@ -59,9 +58,9 @@ const CreatePost = () => {
               </Form.Item>
             </Col>
             <Col span={12}>
-            <Form.Item name="tags" hasFeedback>
-              <Select mode="tags" placeholder="Tags" />
-            </Form.Item>
+              <Form.Item name="tags" hasFeedback>
+                <Select mode="tags" placeholder="Tags" />
+              </Form.Item>
             </Col>
           </Row>
           <Form.Item name="text" hasFeedback
@@ -87,4 +86,4 @@ const CreatePost = () => {
   );
 };
 
-export default CreatePost;
+export default CreateArticle;
