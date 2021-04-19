@@ -4,7 +4,7 @@ import {Button} from 'antd';
 const Card = (props: { title: string }) => {
   return (
     <div className="Card">
-      <img src="./assets/wallpaper.jpg" alt="" />
+      <img src={"http://localhost:8080/blog/image/display/1"} alt="" />
       <div className="text">
         <h1>{props.title}</h1>
         <Button type="primary" shape="round" size="large">

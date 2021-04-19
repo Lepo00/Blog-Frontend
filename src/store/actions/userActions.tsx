@@ -1,12 +1,7 @@
 import {noToken as axios} from '../../config/axiosConfig';
+import { LoginUser } from '../../models';
 
-interface customUser {
-    username: string,
-    password: string,
-    remember: boolean
-}
-
-export const login = (user: customUser) => async (dispatch: (actions: { type: string; payload: any; }) => void) => {
+export const login = (user: LoginUser) => async (dispatch: (actions: { type: string; payload: any; }) => void) => {
     try {
         const res = await axios.post('auth/token', user);
         dispatch({

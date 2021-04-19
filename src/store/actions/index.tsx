@@ -1,3 +1,3 @@
 export {login, logout} from './userActions';
 export {increment} from './counterActions';
-export {getArticles} from './articleActions';
+export {getArticles, detailArticle, getFirstArticles} from './articleActions';
