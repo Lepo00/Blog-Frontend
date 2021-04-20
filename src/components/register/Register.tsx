@@ -4,13 +4,17 @@ import { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Form, Input, Checkbox, Button, AutoComplete, Switch, Tooltip } from 'antd';
 import { UserOutlined, LockOutlined, RedditOutlined, PhoneOutlined, QuestionCircleOutlined } from '@ant-design/icons';
+import { useDispatch } from 'react-redux';
+import { register } from '../../store/actions';
 
 const Register = () => {
+  const dispatch = useDispatch();
   const [options, setOptions] = useState<{ value: string }[]>([]);
   const [theme, toggleTheme] = useContext(Theme);
 
-  function onFinish(values: any) {
-    console.log('okkkk', values);
+  function createUser(values: any) {
+    console.log(values);
+    dispatch(register(values))
   }
   const onSearch = (searchText: string) => {
     setOptions(
@@ -20,7 +24,7 @@ const Register = () => {
   };
   return (
     <div className="Register">
-      <Form name="register" onFinish={onFinish} scrollToFirstError size="large" className="register-form">
+      <Form name="register" onFinish={createUser} scrollToFirstError size="large" className="register-form">
         <img src={theme === "darkTheme" ? "./assets/logo-light.png" : "./assets/logo-dark.png"} className="logor" alt="" />
         <h1>Registrazione</h1>
         <Form.Item name="fullName" hasFeedback
@@ -29,15 +33,17 @@ const Register = () => {
           <Input prefix={<UserOutlined />} placeholder="Nome completo" />
         </Form.Item>
         <Form.Item name="email" hasFeedback className="mail"
-          rules={[{ type: 'email', message: 'Formato Email non valido!' },
-          { required: true, message: 'Email obbligatoria!' },]}
+          rules={[
+            { type: 'email', message: 'Formato Email non valido!' },
+            { required: true, message: 'Email obbligatoria!' },
+          ]}
         >
           <AutoComplete options={options} onSearch={onSearch} placeholder="Email" />
         </Form.Item>
-        <Form.Item name="nickname" hasFeedback
-          rules={[{ required: true, message: 'Nickame obbligatorio!', whitespace: true }]}
+        <Form.Item name="username" hasFeedback
+          rules={[{ required: true, message: 'Username obbligatorio!', whitespace: true }]}
         >
-          <Input placeholder="Nickname" prefix={<RedditOutlined />} suffix={
+          <Input placeholder="Username" prefix={<RedditOutlined />} suffix={
             <Tooltip title="Il nome con cui ti vedranno gli altri utenti">
               <QuestionCircleOutlined />
             </Tooltip>

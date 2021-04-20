@@ -10,7 +10,7 @@ import { Article } from '../../models';
 function Home() {
     const dispatch = useDispatch();
     useEffect(() => { dispatch(getFirstArticles(7)) }, [dispatch])
-    const articles: Article[] = useSelector((state: RootState) => state.articleReducers).articles;
+    const articles= useSelector((state: RootState) => state.articleReducers).articles;
 
     return (
         <div className="Home">

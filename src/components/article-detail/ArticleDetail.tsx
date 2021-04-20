@@ -3,14 +3,13 @@ import AuthorCard from '../ui/authorCard/AuthorCard';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { detailArticle } from '../../store/actions';
-import { Article } from '../../models';
 import { RootState } from '../../store/reducers';
 
 
 function PostDetail(props: any) {
     const dispatch = useDispatch();
     useEffect(() => {dispatch(detailArticle(props.match.params.id))}, [dispatch, props]);
-    const article:Article = useSelector((state: RootState) => state.articleReducers).detail;
+    const article = useSelector((state: RootState) => state.articleReducers).detail;
 
     function img() {
         const id = article.image?.id;
