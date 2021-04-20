@@ -10,7 +10,7 @@ function Menu(props: any) {
     // eslint-disable-next-line
     const [theme, toogleTheme] = useContext(Theme);
     const [path] = useState(useLocation().pathname);
-    if (path === "/login" || path === "/register") {
+    if (path.toLowerCase() === "/login" || path.toLowerCase() === "/register") {
         return null;
     }
     else {

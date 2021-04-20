@@ -32,7 +32,7 @@ const MyPosts = () => {
             <h2>{article.title}</h2>
           </div>
           <div className="buttons">
-            <Link to={"/article/"+article.id}>
+            <Link to={"/article/" + article.id}>
               <Tooltip title="Dettaglio articolo">
                 <Button shape="circle" size="large" icon={<SearchOutlined />} />
               </Tooltip>
