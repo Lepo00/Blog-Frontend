@@ -1,8 +1,8 @@
 export const categories: { name: string, value: string }[] = [
-        { name: "Finanza", value: "Finance" },
-        { name: "Recensione", value: "Review" },
-        { name: "Scienza", value: "Science" },
-        { name: "Sicurezza", value: "Security" },
+        { name: "Finanza", value: "FINANCE" },
+        { name: "Recensione", value: "REVIEW" },
+        { name: "Scienza", value: "SCIENCE" },
+        { name: "Sicurezza", value: "SECURITY" },
 ]
 
 export type category = typeof categories[number];
