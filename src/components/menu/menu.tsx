@@ -18,7 +18,7 @@ function Menu() {
     const logged = useSelector((state: RootState) => state.userReducers);
 
     function subMenuProfile() {
-        return isLoggedIn() || logged?
+        return isLoggedIn() || logged ?
             <ol className="sub-menu">
                 <li className="menu-item"><Link to="/ww">Il mio profilo</Link></li>
                 <li className="menu-item" onClick={() => dispatch(logout())}><Link to="/login">Logout</Link></li>
@@ -29,7 +29,7 @@ function Menu() {
                 <li className="menu-item"><Link to="/register">Registrati</Link></li>
             </ol>
     }
-    
+
     if (path === "/login" || path === "/register") {
         return null;
     }
@@ -37,7 +37,11 @@ function Menu() {
         return (
             <nav className="menu">
                 <ol>
-                    <li className="menu-item"><NavLink activeClassName="selected" to="/Home">Home</NavLink></li>
+                    <li className="menu-item">
+                        <NavLink activeClassName="selected" to="/Home" className="logoa">
+                            <img src={theme === "darkTheme" ? "./assets/logo-light.png" : "./assets/logo-dark.png"} alt="" />
+                        </NavLink>
+                    </li>
                     <li className="menu-item"><NavLink activeClassName="selected" to="/About">Chi sono</NavLink></li>
                     <li className="menu-item">
                         <Link to="/">Categorie</Link>
