@@ -8,6 +8,7 @@ import Register from './register/Register';
 import CreateArticle from './create-article/CreateArticle';
 import MyArticles from './my-articles/MyArticles';
 import NotFound from './not-found/NotFound';
+import Profile from './profile/Profile';
 
 
 export {
@@ -21,4 +22,5 @@ export {
     CreateArticle,
     MyArticles,
     NotFound,
+    Profile
 }

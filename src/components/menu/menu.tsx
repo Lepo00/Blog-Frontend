@@ -20,7 +20,7 @@ function Menu() {
     function subMenuProfile() {
         return isLoggedIn() || logged ?
             <ol className="sub-menu">
-                <li className="menu-item"><Link to="/ww">Il mio profilo</Link></li>
+                <li className="menu-item"><Link to="/profile">Il mio profilo</Link></li>
                 <li className="menu-item" onClick={() => dispatch(logout())}><Link to="/login">Logout</Link></li>
             </ol>
             :
@@ -59,7 +59,7 @@ function Menu() {
                         </ol>
                     </li>
                     <li className="menu-item">
-                        <Link to="/">Profilo</Link>
+                        <Link to="/profile">Profilo</Link>
                         {subMenuProfile()}
                     </li>
                     <li className="menu-item search">
