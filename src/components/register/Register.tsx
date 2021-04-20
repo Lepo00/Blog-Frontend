@@ -21,21 +21,21 @@ const Register = () => {
   return (
     <div className="Register">
       <Form name="register" onFinish={onFinish} scrollToFirstError size="large" className="register-form">
-        <img src={theme==="darkTheme"? "./assets/logo-light.png":"./assets/logo-dark.png"} className="logor" alt=""/>
+        <img src={theme === "darkTheme" ? "./assets/logo-light.png" : "./assets/logo-dark.png"} className="logor" alt="" />
         <h1>Registrazione</h1>
         <Form.Item name="fullName" hasFeedback
-          rules={[{ required: true, message: 'Please input your nickname!' }]}
+          rules={[{ required: true, message: 'Nome completo obbligatorio!' }]}
         >
           <Input prefix={<UserOutlined />} placeholder="Nome completo" />
         </Form.Item>
         <Form.Item name="email" hasFeedback className="mail"
-          rules={[{ type: 'email', message: 'The input is not valid E-mail!' },
-          { required: true, message: 'Please input your E-mail!' },]}
+          rules={[{ type: 'email', message: 'Formato Email non valido!' },
+          { required: true, message: 'Email obbligatoria!' },]}
         >
           <AutoComplete options={options} onSearch={onSearch} placeholder="Email" />
         </Form.Item>
         <Form.Item name="nickname" hasFeedback
-          rules={[{ required: true, message: 'Please input your nickname!', whitespace: true }]}
+          rules={[{ required: true, message: 'Nickame obbligatorio!', whitespace: true }]}
         >
           <Input placeholder="Nickname" prefix={<RedditOutlined />} suffix={
             <Tooltip title="Il nome con cui ti vedranno gli altri utenti">
@@ -43,9 +43,7 @@ const Register = () => {
             </Tooltip>
           } />
         </Form.Item>
-        <Form.Item name="phone" hasFeedback
-          rules={[{ required: true, message: 'Please input your phone number!' }]}
-        >
+        <Form.Item name="phone" hasFeedback>
           <Input placeholder="Phone Number" prefix={<PhoneOutlined />} />
         </Form.Item>
         <Form.Item name="password" hasFeedback
@@ -61,12 +59,12 @@ const Register = () => {
               if (!value || getFieldValue('password') === value) {
                 return Promise.resolve();
               }
-              return Promise.reject(new Error('The two passwords that you entered do not match!'));
+              return Promise.reject(new Error('Le password non coincidono!'));
             },
           }),
           ]}
         >
-          <Input.Password prefix={<LockOutlined />} placeholder="Confirm Password" />
+          <Input.Password prefix={<LockOutlined />} placeholder="Conferma Password" />
         </Form.Item>
         <Form.Item name="agreement" valuePropName="checked" className="agreement"
           rules={[{ validator: (_, value) => value ? Promise.resolve() : Promise.reject(new Error('Should accept agreement')) },

@@ -10,5 +10,6 @@ export default interface User extends AuditModel{
     phone?:string,
     photo?:string,
     role?:string,
+    description?: string
     articles?:Article[];
 }

@@ -6,24 +6,37 @@ import { useEffect } from 'react';
 import { getArticles } from '../../store/actions';
 import { RootState } from '../../store/reducers';
 import { Article } from '../../models';
+import { Link } from 'react-router-dom';
 
 
 const MyPosts = () => {
   const dispatch = useDispatch();
   useEffect(() => { dispatch(getArticles()) }, [dispatch]);
   const articles: Article[] = useSelector((state: RootState) => state.articleReducers).articles;
+  articles.sort((a, b) => { return b.id! - a.id! });
+
+  function img(article: Article) {
+    const id = article?.image?.id;
+    return id ? "http://localhost:8080/blog/image/display/" + id : "./assets/no-image.png";
+  }
 
   return (
     <div className="MyPosts">
       <h1>I miei articoli</h1>
       {articles.map((article, index) => (
         <div className="grid-container" key={index}>
-          <div className="image"><img src="../assets/wallpaper.jpg" alt="" /></div>
-          <div className="title"><h2>{article.title}</h2></div>
+          <div className="image">
+            <img src={img(article)} alt="" />
+          </div>
+          <div className="title">
+            <h2>{article.title}</h2>
+          </div>
           <div className="buttons">
-            <Tooltip title="Dettaglio articolo">
-              <Button shape="circle" size="large" icon={<SearchOutlined />} />
-            </Tooltip>
+            <Link to={"/article/"+article.id}>
+              <Tooltip title="Dettaglio articolo">
+                <Button shape="circle" size="large" icon={<SearchOutlined />} />
+              </Tooltip>
+            </Link>
             <Tooltip title="Modifica Articolo">
               <Button type="primary" shape="circle" size="large" icon={<FormOutlined />} />
             </Tooltip>
@@ -33,7 +46,7 @@ const MyPosts = () => {
           </div>
         </div>
       ))}
-      <Pagination total={50} showSizeChanger
+      <Pagination total={articles.length} showSizeChanger
         showTotal={(total, range) => `${range[0]}-${range[1]} di ${total} articoli`}
         pageSizeOptions={['5', '10', '15', '20']} />
     </div>

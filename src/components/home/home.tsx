@@ -18,7 +18,7 @@ function Home() {
                 {articles.map((article, i) => (
                     <div className={'div' + (i + 1)} key={(i + 1)}>
                         <Link to={"article/" + (article.id)}>
-                            <Card title={article.title!} img={article.image?.id} text={article.text!}/>
+                            <Card article={article}/>
                         </Link>
                     </div>
                 ))}
