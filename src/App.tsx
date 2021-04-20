@@ -1,7 +1,7 @@
 import './App.scss';
 import 'antd/dist/antd.css';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import { About, Contact, Home, Menu, ArticleDetail, Login, Register, CreateArticle, MyArticles } from './components';
+import { About, Contact, Home, Menu, ArticleDetail, Login, Register, CreateArticle, MyArticles, NotFound } from './components';
 import { ThemeProvider } from "react-switch-theme";
 import { colors, activeMode } from './styles/variables';
 import { PrivateRoute } from './guards';
@@ -21,7 +21,7 @@ function App() {
                         <Route path="/article/:id" component={ArticleDetail} />
                         <PrivateRoute path="/create-article" component={CreateArticle} exact={false} />
                         <PrivateRoute path="/my-articles" component={MyArticles} exact={false} />
-                        <Route path="*" component={Home} />
+                        <Route path="*" component={NotFound} />
                     </Switch>
                 </div>
             </Router>
