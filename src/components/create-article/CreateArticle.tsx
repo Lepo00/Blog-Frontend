@@ -1,5 +1,4 @@
 import './CreateArticle.scss';
-import { useState } from 'react';
 import { Form, Input, Button, Checkbox, Select, Upload, Row, Col } from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
 import { useDispatch } from 'react-redux';
@@ -12,15 +11,23 @@ const { Option } = Select;
 const CreateArticle = () => {
   const dispatch = useDispatch();
 
-  const create = (values: Article) => {
+  const create = (values: any) => {
     const article: Article = {
-      "title":values.title,
-      "text":values.text,
-      "categories":values.categories,
-      "tags":values.tags,
-  };
-    console.log(article);
-    //dispatch(createArticle(values));
+      "title": values.title,
+      "text": values.text,
+      "categories": values.categories,
+      "tags": [],
+    };
+    values.tags?.map((tag: string) => (
+      article.tags?.push({ code: tag })
+    ))
+
+    let formData = new FormData();
+    if (values.image)
+      formData.append("image", values.image.file);
+    formData.append('article', new Blob([JSON.stringify(article)], { type: "application/json" }));
+
+    dispatch(createArticle(formData));
   };
 
   return (
@@ -28,7 +35,6 @@ const CreateArticle = () => {
       <div className="form-create">
         <h1>Crea un nuovo articolo</h1>
         <Form
-          method="POST"
           encType="multipart/form-data"
           name="create-post"
           onFinish={create}

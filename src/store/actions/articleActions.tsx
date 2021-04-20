@@ -25,7 +25,7 @@ export const detailArticle =(id:number)=>async(dispatch:(action: Action)=>void)=
     })
 }
 
-export const createArticle =(article:Article)=>async(dispatch:(action: Action)=>void)=>{
+export const createArticle =(article:FormData)=>async(dispatch:(action: Action)=>void)=>{
     const {data} = await axios.post<Article>('user/addArticle', article);
     dispatch({
         type: "CREATE_ARTICLE",
