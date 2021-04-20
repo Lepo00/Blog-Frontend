@@ -6,11 +6,11 @@ import { Theme } from "react-switch-theme";
 import { useLocation } from 'react-router-dom';
 import {categories} from '../../models/Categories';
 
-function Menu(props: any) {
+function Menu() {
     // eslint-disable-next-line
     const [theme, toogleTheme] = useContext(Theme);
-    const [path] = useState(useLocation().pathname);
-    if (path.toLowerCase() === "/login" || path.toLowerCase() === "/register") {
+    const path = useLocation().pathname.toLocaleLowerCase();
+    if (path === "/login" || path === "/register") {
         return null;
     }
     else {
