@@ -5,10 +5,15 @@ import { isLoggedIn } from "./isLogged";
 const PrivateRoute: React.FC<{
     component: React.FC;
     path: string;
-    exact: boolean;
+    exact?: boolean;
+    already?: boolean;
 }> = (props) => {
 
     const logged = isLoggedIn();
+    if (props.already)
+        return !logged ?
+            (<Route path={props.path} exact={props.exact} component={props.component} />) :
+            (<Redirect to="/home" />);
 
     return logged ?
         (<Route path={props.path} exact={props.exact} component={props.component} />) :

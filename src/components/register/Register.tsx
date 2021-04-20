@@ -1,14 +1,16 @@
 import './Register.scss';
 import { Theme } from "react-switch-theme";
 import { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { Form, Input, Checkbox, Button, AutoComplete, Switch, Tooltip } from 'antd';
 import { UserOutlined, LockOutlined, RedditOutlined, PhoneOutlined, QuestionCircleOutlined } from '@ant-design/icons';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { register } from '../../store/actions';
+import { RootState } from '../../store/reducers';
 
 const Register = () => {
   const dispatch = useDispatch();
+  const logged = useSelector((state: RootState) => state.userReducers);
   const [options, setOptions] = useState<{ value: string }[]>([]);
   const [theme, toggleTheme] = useContext(Theme);
 
@@ -24,6 +26,7 @@ const Register = () => {
   };
   return (
     <div className="Register">
+      {logged ? <Redirect to="/home"/> : null}
       <Form name="register" onFinish={createUser} scrollToFirstError size="large" className="register-form">
         <img src={theme === "darkTheme" ? "./assets/logo-light.png" : "./assets/logo-dark.png"} className="logor" alt="" />
         <h1>Registrazione</h1>

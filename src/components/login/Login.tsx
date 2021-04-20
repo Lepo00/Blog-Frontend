@@ -2,7 +2,7 @@ import './Login.scss';
 import { useContext } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../store/reducers';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { Theme } from "react-switch-theme";
 import { Form, Input, Button, Checkbox, Switch } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
@@ -18,6 +18,7 @@ const Login = () => {
   };
   return (
     <div className="Login">
+      {logged ? <Redirect to="/home"/> : null}
       <img src={theme === "darkTheme" ? "./assets/logo-light.png" : "./assets/logo-dark.png"} className="logo" alt="" />
       {/*<h1>Login</h1>*/}
       <h1>{logged ? "loggato" : "non loggato"}</h1>
