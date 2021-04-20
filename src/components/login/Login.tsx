@@ -1,5 +1,5 @@
 import './Login.scss';
-import { useContext} from 'react';
+import { useContext } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../store/reducers';
 import { Link } from 'react-router-dom';
@@ -18,9 +18,9 @@ const Login = () => {
   };
   return (
     <div className="Login">
-      <img src={theme==="darkTheme"? "./assets/logo-light.png":"./assets/logo-dark.png"} className="logo" alt=""/>
+      <img src={theme === "darkTheme" ? "./assets/logo-light.png" : "./assets/logo-dark.png"} className="logo" alt="" />
       {/*<h1>Login</h1>*/}
-      <h1>{logged? "loggato": "non loggato"}</h1>
+      <h1>{logged ? "loggato" : "non loggato"}</h1>
       <Form
         size="large"
         name="login"

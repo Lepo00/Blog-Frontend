@@ -33,6 +33,6 @@ export const register = (user: User): AppThunk => async dispatch => {
         payload: res.status === 200
     })
     dispatch(login(
-        {username:user.username!, password: user.password!, remember:false}
+        { username: user.username!, password: user.password!, remember: false }
     ))
 }

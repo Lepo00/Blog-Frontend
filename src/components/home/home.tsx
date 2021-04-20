@@ -5,7 +5,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { RootState } from '../../store/reducers';
 import { getFirstArticles } from '../../store/actions';
-import { Article } from '../../models';
 
 function Home() {
     const dispatch = useDispatch();
