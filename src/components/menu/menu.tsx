@@ -1,10 +1,10 @@
 import './Menu.scss';
 import { NavLink, Link } from 'react-router-dom';
 import { Switch } from 'antd';
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 import { Theme } from "react-switch-theme";
 import { useLocation } from 'react-router-dom';
-import {categories} from '../../models/Categories';
+import { categories } from '../../models/Categories';
 
 function Menu() {
     // eslint-disable-next-line
@@ -22,8 +22,8 @@ function Menu() {
                     <li className="menu-item">
                         <Link to="/">Categorie</Link>
                         <ol className="sub-menu">
-                            {categories.map((category,i)=>(
-                                <li className="menu-item" key={i}><Link to={"/category/"+category.name}>{category.name}</Link></li>
+                            {categories.map((category, i) => (
+                                <li className="menu-item" key={i}><Link to={"/category/" + category.name}>{category.name}</Link></li>
                             ))}
                         </ol>
                     </li>

@@ -7,6 +7,8 @@ import Login from './login/Login';
 import Register from './register/Register';
 import CreateArticle from './create-article/CreateArticle';
 import MyArticles from './my-articles/MyArticles';
+import NotFound from './not-found/NotFound';
+
 
 export {
     Contact,
@@ -17,5 +19,6 @@ export {
     Login,
     Register,
     CreateArticle,
-    MyArticles
+    MyArticles,
+    NotFound,
 }
