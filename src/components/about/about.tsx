@@ -1,6 +1,6 @@
 import './About.scss';
 import { useDispatch, useSelector } from 'react-redux';
-import { increment,/* signin, signout,*/ getArticles } from '../../store/actions';
+import { increment, myArticles } from '../../store/actions';
 import { RootState } from '../../store/reducers';
 import { useEffect } from 'react';
 
@@ -8,7 +8,7 @@ function About(props:any) {
     const dispatch = useDispatch();
     const counter = useSelector((state: RootState) => state.counterReducers);
 
-    useEffect(() => {dispatch(getArticles())}, [dispatch]);
+    useEffect(() => {dispatch(myArticles())}, [dispatch]);
     
     return (
         <div className="About">

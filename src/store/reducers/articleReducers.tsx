@@ -7,7 +7,7 @@ const initialState: { articles: Article[], detail: Article } = {
 
 const articleReducer = (state = initialState, action: Action) => {
     switch (action.type) {
-        case "GET_ARTICLES":
+        case "MY_ARTICLES":
             return {
                 ...state,
                 articles: action.payload as Article[],

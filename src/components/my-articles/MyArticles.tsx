@@ -3,7 +3,7 @@ import { Button, Tooltip, Pagination } from 'antd';
 import { DeleteOutlined, SearchOutlined, FormOutlined } from '@ant-design/icons';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { getArticles } from '../../store/actions';
+import { myArticles } from '../../store/actions';
 import { RootState } from '../../store/reducers';
 import { Article } from '../../models';
 import { Link } from 'react-router-dom';
@@ -11,7 +11,7 @@ import { Link } from 'react-router-dom';
 
 const MyPosts = () => {
   const dispatch = useDispatch();
-  useEffect(() => { dispatch(getArticles()) }, [dispatch]);
+  useEffect(() => { dispatch(myArticles()) }, [dispatch]);
   const articles = useSelector((state: RootState) => state.articleReducers).articles;
   articles.sort((a, b) => { return b.id! - a.id! });
 
