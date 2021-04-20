@@ -5,11 +5,31 @@ import { useContext } from 'react';
 import { Theme } from "react-switch-theme";
 import { useLocation } from 'react-router-dom';
 import { categories } from '../../models/Categories';
+import { useDispatch, useSelector } from 'react-redux';
+import { logout } from '../../store/actions';
+import { isLoggedIn } from '../../guards';
+import { RootState } from '../../store/reducers';
 
 function Menu() {
+    const dispatch = useDispatch();
     // eslint-disable-next-line
     const [theme, toogleTheme] = useContext(Theme);
     const path = useLocation().pathname.toLocaleLowerCase();
+    const logged = useSelector((state: RootState) => state.userReducers);
+
+    function subMenuProfile() {
+        return isLoggedIn() || logged?
+            <ol className="sub-menu">
+                <li className="menu-item"><Link to="/ww">Il mio profilo</Link></li>
+                <li className="menu-item" onClick={() => dispatch(logout())}><Link to="/login">Logout</Link></li>
+            </ol>
+            :
+            <ol className="sub-menu">
+                <li className="menu-item"><Link to="/login">Login</Link></li>
+                <li className="menu-item"><Link to="/register">Registrati</Link></li>
+            </ol>
+    }
+    
     if (path === "/login" || path === "/register") {
         return null;
     }
@@ -36,10 +56,7 @@ function Menu() {
                     </li>
                     <li className="menu-item">
                         <Link to="/">Profilo</Link>
-                        <ol className="sub-menu">
-                            <li className="menu-item"><Link to="/ww">Il mio profilo</Link></li>
-                            <li className="menu-item"><Link to="/aa">Logout</Link></li>
-                        </ol>
+                        {subMenuProfile()}
                     </li>
                     <li className="menu-item search">
                         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossOrigin="anonymous" />

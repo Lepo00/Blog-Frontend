@@ -2,11 +2,18 @@ import { instance as axios, noToken } from '../../config/axiosConfig';
 import { Article, AppThunk } from '../../models';
 
 export const myArticles = (): AppThunk => async dispatch => {
-    const { data } = await axios.get<Article[]>('user/my-articles');
-    dispatch({
-        type: "MY_ARTICLES",
-        payload: data
-    })
+    try {
+        const { data } = await axios.get<Article[]>('user/my-articles');
+        dispatch({
+            type: "MY_ARTICLES",
+            payload: data
+        })
+    }catch{
+        dispatch({
+            type: "MY_ARTICLES",
+            payload: []
+        })
+    }
 }
 
 export const getFirstArticles = (limit: number): AppThunk => async dispatch => {
