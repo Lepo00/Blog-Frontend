@@ -10,13 +10,14 @@ const PrivateRoute: React.FC<{
 }> = (props) => {
 
     const logged = isLoggedIn();
-    if (props.already)
+    if (props.already) {
         return !logged ?
-            (<Route path={props.path} exact={props.exact} component={props.component} />) :
-            (<Redirect to="/home" />);
-
-    return logged ?
-        (<Route path={props.path} exact={props.exact} component={props.component} />) :
-        (<Redirect to="/login" />);
+            <Route path={props.path} exact={props.exact} component={props.component} /> :
+            <Redirect to="/home" />;
+    } else {
+        return logged ?
+            <Route path={props.path} exact={props.exact} component={props.component} /> :
+            <Redirect to="/login" />;
+    }
 };
 export default PrivateRoute;

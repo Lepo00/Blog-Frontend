@@ -1,4 +1,4 @@
-import { noToken as axios } from '../../config/axiosConfig';
+import { noToken as axios, instance as token } from '../../config/axiosConfig';
 import { LoginUser, User, AppThunk } from '../../models';
 
 export const login = (user: LoginUser): AppThunk => async dispatch => {
@@ -35,4 +35,12 @@ export const register = (user: User): AppThunk => async dispatch => {
     dispatch(login(
         { username: user.username!, password: user.password!, remember: false }
     ))
+}
+
+export const myProfile = (): AppThunk => async dispatch => {
+    const {data} = await token.get('user/my-profile');
+    dispatch({
+        type: "MY_PROFILE",
+        payload: data
+    })
 }

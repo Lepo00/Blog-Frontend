@@ -1,6 +1,6 @@
-import { Action, Article } from "../../models";
+import { Action, Article, ArticleState } from "../../models";
 
-const initialState: { articles: Article[], detail: Article } = {
+const initialState: ArticleState = {
     articles: [],
     detail: {}
 }

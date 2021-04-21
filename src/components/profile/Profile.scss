@@ -2,8 +2,9 @@
     width: 100%;
     color: var(--font);
     text-align: center;
-    background-color: var(--invFont);
+    background-color: var(--bg);
     min-height: 90vh;
+    text-transform: capitalize;
 
     .title {
         font-size: 30px;
@@ -47,5 +48,6 @@
 
     button{
         width: 15%;
+        min-width: 100px;
     }
 }
