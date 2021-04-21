@@ -11,7 +11,7 @@ import { login } from '../../store/actions/userActions';
 const Login = () => {
   const dispatch = useDispatch();
   const [theme, toggleTheme] = useContext(Theme);
-  const logged = useSelector((state: RootState) => state.userReducers);
+  const {logged} = useSelector((state: RootState) => state.userReducers);
 
   function Login(values: { username: string, password: string, remember: boolean }) {
     dispatch(login(values));

@@ -12,7 +12,7 @@ import { Link } from 'react-router-dom';
 const MyPosts = () => {
   const dispatch = useDispatch();
   useEffect(() => { dispatch(myArticles()) }, [dispatch]);
-  const articles = useSelector((state: RootState) => state.articleReducers).articles;
+  const {articles} = useSelector((state: RootState) => state.articleReducers);
   articles.sort((a, b) => { return b.id! - a.id! });
 
   function img(article: Article) {

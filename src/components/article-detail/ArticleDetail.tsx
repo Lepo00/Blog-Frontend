@@ -9,10 +9,10 @@ import { RootState } from '../../store/reducers';
 function PostDetail(props: any) {
     const dispatch = useDispatch();
     useEffect(() => {dispatch(detailArticle(props.match.params.id))}, [dispatch, props]);
-    const article = useSelector((state: RootState) => state.articleReducers).detail;
+    const {detail} = useSelector((state: RootState) => state.articleReducers);
 
     function img() {
-        const id = article.image?.id;
+        const id = detail.image?.id;
         return id ? "http://localhost:8080/blog/image/display/" + id : "../assets/no-image.png";
     }
     
@@ -20,10 +20,10 @@ function PostDetail(props: any) {
         <div className="Post">
             <div className="container">
                 <div className="doc">
-                    <h1 className="title">{article.title}</h1>
+                    <h1 className="title">{detail.title}</h1>
                     <img src={img()} alt="" className="image" />
-                    <p className="text">{article.text}</p>
-                    <AuthorCard author={article.author}/>
+                    <p className="text">{detail.text}</p>
+                    <AuthorCard author={detail.author}/>
                 </div>
                 <div className="related">
                     <h1>Related</h1>

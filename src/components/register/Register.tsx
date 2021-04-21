@@ -10,7 +10,7 @@ import { RootState } from '../../store/reducers';
 
 const Register = () => {
   const dispatch = useDispatch();
-  const logged = useSelector((state: RootState) => state.userReducers);
+  const {logged} = useSelector((state: RootState) => state.userReducers);
   const [options, setOptions] = useState<{ value: string }[]>([]);
   const [theme, toggleTheme] = useContext(Theme);
 

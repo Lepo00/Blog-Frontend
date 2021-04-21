@@ -3,9 +3,17 @@
     color: var(--font);
     background-color: var(--bg);
     position: absolute;
+    @media only screen and (max-width: 900px) {
+        .related,.doc {
+            width: 100% !important;
+            margin: 15px auto;
+        }
+    }
     .image {
         width: 70%;
         height: 80%;
+        margin-top: -15px;
+        border-radius: 10px;
     }
     .doc {
         background-color: var(--invFont);
@@ -13,8 +21,8 @@
         width: 75%;
         margin-right: 2%;
         border-radius: 20px;
-        .text{
-            padding: 20px;
+        .text {
+            padding: 10px 5%;
             font-size: 15px;
         }
     }
@@ -25,7 +33,7 @@
         width: 23%;
         background-color: var(--invFont);
     }
-    .title{
+    .title {
         font-size: 40px;
     }
 }

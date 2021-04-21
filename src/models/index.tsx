@@ -7,6 +7,7 @@ import Image from './Image';
 import Action from './store/Action';
 import LoginUser from './store/LoginUser';
 import {AppThunk} from './store/AppThunk';
+import ArticleState from './store/ArticleState';
 
 export type{
     Article,
@@ -17,5 +18,6 @@ export type{
     Action,
     LoginUser,
     Image,
+    ArticleState,
     AppThunk
 }
