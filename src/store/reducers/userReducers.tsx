@@ -1,13 +1,31 @@
-const initialState = false;
+import { Action, User } from "../../models";
+import UserState from "../../models/store/UserState";
 
-const userReducer = (state = initialState, action: { type: string; payload: boolean }) => {
+const initialState:UserState = {
+    logged: false,
+    profile: {}
+};
+
+const userReducer = (state = initialState, action: Action) => {
     switch (action.type) {
         case 'LOGIN':
-            return action.payload;
+            return {
+                ...state,
+                logged: action.payload as boolean
+            }
         case 'LOGOUT':
-            return false;
+            return {
+                ...state,
+                logged: false,
+                profile:{}
+            }
         case 'REGISTER':
             return state;
+        case 'MY_PROFILE':
+            return{
+                ...state,
+                profile: action.payload as User
+            }
         default:
             return state
     }
