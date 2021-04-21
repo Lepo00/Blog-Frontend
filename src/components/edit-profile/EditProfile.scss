@@ -2,4 +2,19 @@
     position: absolute;
     width: 100%;
     color: var(--font);
+
+    .editForm{
+        width: 700px;
+        margin: 30px auto;
+        padding: 15px 40px;
+        background-color: var(--bg);
+        border-radius: 20px;
+        @media only screen and (max-width: 730px) {
+            width: 96%;
+        }
+    }
+    textarea.ant-input {
+        min-height: 80px;
+        overflow-y: hidden;
+    }
 }

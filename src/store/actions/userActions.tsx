@@ -45,6 +45,14 @@ export const myProfile = (): AppThunk => async dispatch => {
     })
 }
 
+export const updateProfile = (user:User): AppThunk => async dispatch => {
+    const {data} = await token.put('user', user);
+    dispatch({
+        type: "UPDATE_PROFILE",
+        payload: data
+    })
+}
+
 export const uploadPhoto = (file:FormData): AppThunk => async dispatch => {
     const {data} = await token.put('user/upload-photo', file);
     dispatch({
