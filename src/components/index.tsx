@@ -9,6 +9,7 @@ import CreateArticle from './create-article/CreateArticle';
 import MyArticles from './my-articles/MyArticles';
 import NotFound from './not-found/NotFound';
 import Profile from './profile/Profile';
+import EditProfile from './edit-profile/EditProfile';
 
 
 export {
@@ -22,5 +23,6 @@ export {
     CreateArticle,
     MyArticles,
     NotFound,
-    Profile
+    Profile,
+    EditProfile,
 }
