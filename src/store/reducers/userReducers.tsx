@@ -1,7 +1,7 @@
 import { Action, User } from "../../models";
 import UserState from "../../models/store/UserState";
 
-const initialState:UserState = {
+const initialState: UserState = {
     logged: false,
     profile: {}
 };
@@ -17,12 +17,17 @@ const userReducer = (state = initialState, action: Action) => {
             return {
                 ...state,
                 logged: false,
-                profile:{}
+                profile: {}
             }
         case 'REGISTER':
             return state;
         case 'MY_PROFILE':
-            return{
+            return {
+                ...state,
+                profile: action.payload as User
+            }
+        case 'UPLOAD_PHOTO':
+            return {
                 ...state,
                 profile: action.payload as User
             }

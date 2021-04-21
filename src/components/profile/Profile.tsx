@@ -1,8 +1,8 @@
-import { Button } from 'antd';
+import { Button, Upload } from 'antd';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { myProfile } from '../../store/actions';
+import { myProfile, uploadPhoto } from '../../store/actions';
 import { RootState } from '../../store/reducers';
 import './Profile.scss';
 
@@ -11,11 +11,26 @@ const Profile = () => {
   useEffect(() => { dispatch(myProfile()) }, [dispatch]);
   const { profile } = useSelector((state: RootState) => state.userReducers);
 
+  function img():string{
+    if(profile.photo)
+      return "http://localhost:8080/blog/image/display/"+profile.photo.id
+    else
+      return "https://i.stack.imgur.com/34AD2.jpg";
+  }
+
+  function ciao(info:any){
+    let formData = new FormData();
+    formData.append("photo", info.file);
+    dispatch(uploadPhoto(formData))
+  }
+
   return (
     <div className="Profile">
       <p className="title">Benvenuto </p>
       <p className="nome">{profile.fullName}</p>
-      <img src="https://i.stack.imgur.com/34AD2.jpg" alt="logo" className="logo" />
+      <Upload maxCount={1} accept="image/png, image/jpeg" showUploadList={false} beforeUpload={()=>false} onChange={ciao}>
+        <img src={img()} alt="logo" className="logo" />
+      </Upload>
       <table>
         <tbody>
           <tr>

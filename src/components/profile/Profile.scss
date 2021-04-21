@@ -21,7 +21,9 @@
         width: 144px;
         height: 144px;
         border-radius: 50%;
+        border: 3px solid var(--font);
         margin: -30px auto 5px auto;
+        cursor: pointer;
     }
 
     table {

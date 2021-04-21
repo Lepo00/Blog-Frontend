@@ -44,3 +44,11 @@ export const myProfile = (): AppThunk => async dispatch => {
         payload: data
     })
 }
+
+export const uploadPhoto = (file:FormData): AppThunk => async dispatch => {
+    const {data} = await token.put('user/upload-photo', file);
+    dispatch({
+        type: "UPLOAD_PHOTO",
+        payload: data
+    })
+}
