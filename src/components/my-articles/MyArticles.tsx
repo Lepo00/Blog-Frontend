@@ -12,8 +12,12 @@ import { Link } from 'react-router-dom';
 const MyPosts = () => {
   const dispatch = useDispatch();
   useEffect(() => { dispatch(myArticles()) }, [dispatch]);
-  const {articles} = useSelector((state: RootState) => state.articleReducers);
+  const { articles } = useSelector((state: RootState) => state.articleReducers);
   articles.sort((a, b) => { return b.id! - a.id! });
+
+  function pageChange(page: any, pageSize: any) {
+    console.log(page, pageSize)
+  }
 
   function img(article: Article) {
     const id = article?.image?.id;
@@ -46,7 +50,7 @@ const MyPosts = () => {
           </div>
         </div>
       ))}
-      <Pagination total={articles.length} showSizeChanger
+      <Pagination total={articles.length} showSizeChanger onChange={pageChange}
         showTotal={(total, range) => `${range[0]}-${range[1]} di ${total} articoli`}
         pageSizeOptions={['5', '10', '15', '20']} />
     </div>

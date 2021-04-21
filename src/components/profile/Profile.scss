@@ -1,10 +1,19 @@
 .Profile {
+    position: absolute;
     width: 100%;
     color: var(--font);
-    text-align: center;
-    background-color: var(--bg);
-    min-height: 90vh;
     text-transform: capitalize;
+
+    .card {
+        background-color: var(--bg);
+        width: 600px;
+        margin: 15px auto;
+        padding: 0 30px 10px 30px;
+        border-radius: 20px;
+        @media only screen and (max-width: 630px) {
+            width: 95%;
+        }
+    }
 
     .title {
         font-size: 30px;
@@ -22,18 +31,16 @@
         height: 144px;
         border-radius: 50%;
         border: 3px solid var(--font);
-        margin: -30px auto 5px auto;
+        margin: -35px auto 2px auto;
         cursor: pointer;
     }
 
     table {
-        border-collapse: collapse;
-        margin: 0 auto;
         font-size: 20px;
     }
 
     td {
-        padding: 10px 30px;
+        padding: 8px 30px;
         width: 50%;
     }
 
@@ -48,8 +55,8 @@
         font-weight: 10;
     }
 
-    button{
-        width: 15%;
+    button {
+        width: 35%;
         min-width: 100px;
     }
 }
