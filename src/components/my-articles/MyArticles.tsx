@@ -3,7 +3,7 @@ import { Button, Tooltip, Pagination } from 'antd';
 import { DeleteOutlined, SearchOutlined, FormOutlined } from '@ant-design/icons';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { myArticles } from '../../store/actions';
+import { myArticles, myArticlesSize } from '../../store/actions';
 import { RootState } from '../../store/reducers';
 import { Article } from '../../models';
 import { Link } from 'react-router-dom';
@@ -11,12 +11,16 @@ import { Link } from 'react-router-dom';
 
 const MyPosts = () => {
   const dispatch = useDispatch();
-  useEffect(() => { dispatch(myArticles()) }, [dispatch]);
+  useEffect(() => {
+    dispatch(myArticles(0, 10));
+    dispatch(myArticlesSize())
+  }, [dispatch]);
   const { articles } = useSelector((state: RootState) => state.articleReducers);
+  const { size } = useSelector((state: RootState) => state.articleReducers);
   articles.sort((a, b) => { return b.id! - a.id! });
 
   function pageChange(page: any, pageSize: any) {
-    console.log(page, pageSize)
+    dispatch(myArticles(page-1, pageSize));
   }
 
   function img(article: Article) {
@@ -50,7 +54,7 @@ const MyPosts = () => {
           </div>
         </div>
       ))}
-      <Pagination total={articles.length} showSizeChanger onChange={pageChange}
+      <Pagination total={size} showSizeChanger onChange={pageChange}
         showTotal={(total, range) => `${range[0]}-${range[1]} di ${total} articoli`}
         pageSizeOptions={['5', '10', '15', '20']} />
     </div>

@@ -1,9 +1,10 @@
 import { instance as axios, noToken } from '../../config/axiosConfig';
 import { Article, AppThunk } from '../../models';
 
-export const myArticles = (): AppThunk => async dispatch => {
+export const myArticles = (page:number, size:number): AppThunk => async dispatch => {
+    const params = new URLSearchParams([['page', page+''],['size',size+'']]);
     try {
-        const { data } = await axios.get<Article[]>('user/my-articles');
+        const { data } = await axios.get<Article[]>('user/my-articles',{params});
         dispatch({
             type: "MY_ARTICLES",
             payload: data
@@ -14,6 +15,14 @@ export const myArticles = (): AppThunk => async dispatch => {
             payload: []
         })
     }
+}
+
+export const myArticlesSize = (): AppThunk => async dispatch => {
+    const { data } = await axios.get('user/my-articles-size');
+    dispatch({
+        type: "MY_ARTICLE_SIZE",
+        payload: data.message
+    })
 }
 
 export const getFirstArticles = (limit: number): AppThunk => async dispatch => {
