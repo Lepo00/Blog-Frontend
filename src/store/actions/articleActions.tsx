@@ -56,3 +56,19 @@ export const deleteArticle = (id: number): AppThunk => async dispatch => {
         type: "DELETE_ARTICLE",
     })
 }
+
+export const articlesByCategory = (category:string, page:number, size:number): AppThunk => async dispatch => {
+    const params = new URLSearchParams([['page', page+''],['size',size+''],['category',category]]);
+    try {
+        const { data } = await axios.get<Article[]>('article',{params});
+        dispatch({
+            type: "ARTICLES_BY_CATEGORY",
+            payload: data
+        })
+    }catch{
+        dispatch({
+            type: "ARTICLES_BY_CATEGORY",
+            payload: []
+        })
+    }
+}
