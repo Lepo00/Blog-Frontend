@@ -47,7 +47,7 @@ function Menu() {
                         <Link to="/">Categorie</Link>
                         <ol className="sub-menu">
                             {categories.map((category, i) => (
-                                <li className="menu-item" key={i}><Link to={"/category/" + category.name}>{category.name}</Link></li>
+                                <li className="menu-item" key={i}><Link to={"/category/" + category.value}>{category.name}</Link></li>
                             ))}
                         </ol>
                     </li>

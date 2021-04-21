@@ -3,7 +3,7 @@ import { Action, Article, ArticleState } from "../../models";
 const initialState: ArticleState = {
     articles: [],
     detail: {},
-    size:0
+    size: 0
 }
 
 const articleReducer = (state = initialState, action: Action) => {
@@ -33,6 +33,8 @@ const articleReducer = (state = initialState, action: Action) => {
                 ...state,
                 size: action.payload as number,
             }
+        case "DELETE_ARTICLE":
+            return state
         default: return state
     }
 }

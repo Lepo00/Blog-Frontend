@@ -10,6 +10,7 @@ import MyArticles from './my-articles/MyArticles';
 import NotFound from './not-found/NotFound';
 import Profile from './profile/Profile';
 import EditProfile from './edit-profile/EditProfile';
+import Category from './category/Category';
 
 
 export {
@@ -25,4 +26,5 @@ export {
     NotFound,
     Profile,
     EditProfile,
+    Category,
 }

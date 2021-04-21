@@ -3,7 +3,7 @@ import { Button, Tooltip, Pagination } from 'antd';
 import { DeleteOutlined, SearchOutlined, FormOutlined } from '@ant-design/icons';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { myArticles, myArticlesSize } from '../../store/actions';
+import { deleteArticle, myArticles, myArticlesSize } from '../../store/actions';
 import { RootState } from '../../store/reducers';
 import { Article } from '../../models';
 import { Link } from 'react-router-dom';
@@ -28,6 +28,11 @@ const MyPosts = () => {
     return id ? "http://localhost:8080/blog/image/display/" + id : "./assets/no-image.png";
   }
 
+  function removeArticle(id:number){
+    dispatch(deleteArticle(id));
+    dispatch(myArticles(0, 10));
+  }
+
   return (
     <div className="MyPosts">
       <h1>I miei articoli</h1>
@@ -49,7 +54,7 @@ const MyPosts = () => {
               <Button type="primary" shape="circle" size="large" icon={<FormOutlined />} />
             </Tooltip>
             <Tooltip title="Elimina articolo" color="red">
-              <Button type="primary" color="red" danger shape="circle" size="large" icon={<DeleteOutlined />} />
+              <Button onClick={()=>removeArticle(article.id!)} type="primary" danger shape="circle" size="large" icon={<DeleteOutlined />}/>
             </Tooltip>
           </div>
         </div>
