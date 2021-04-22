@@ -39,7 +39,7 @@ function Menu() {
                 <ol>
                     <li className="menu-item">
                         <NavLink activeClassName="selected" to="/Home" className="logoa">
-                            <img src={theme === "darkTheme" ? "./assets/logo-light.png" : "./assets/logo-dark.png"} alt="" />
+                            <img src={theme === "darkTheme" ? "../assets/logo-light.png" : "../assets/logo-dark.png"} alt="" />
                         </NavLink>
                     </li>
                     <li className="menu-item"><NavLink activeClassName="selected" to="/About">Chi sono</NavLink></li>

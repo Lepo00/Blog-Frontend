@@ -1,28 +1,19 @@
 .Category{
-    .grid-container {
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr;
-        grid-template-rows: 1fr 1fr;
-        gap: 0px 0px;
-        grid-template-areas:
-          "div1 div2 div3 div4"
-          "div5 div6 div7 div8";
-      }
-      
-      .div1 { grid-area: div1; }
-      
-      .div2 { grid-area: div2; }
-      
-      .div3 { grid-area: div3; }
-      
-      .div4 { grid-area: div4; }
-      
-      .div5 { grid-area: div5; }
-      
-      .div6 { grid-area: div6; }
-      
-      .div7 { grid-area: div7; }
-      
-      .div8 { grid-area: div8; }
-      
+    background-color: var(--bg);
+    width: 100%;
+    min-height: 90vh;
+    .grid-container{
+        width: 100%;
+        padding: 0 20px;
+    }
+
+    h1{
+        text-transform: capitalize;
+    }
+    .ant{
+        &-col{
+            height: 450px;
+            margin: 20px 0;
+        }
+    }
 }
