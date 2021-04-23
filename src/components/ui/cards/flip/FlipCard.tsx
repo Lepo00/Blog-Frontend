@@ -10,18 +10,26 @@ const FlipCard = (props: { article: Article }) => {
   }
   return (
     <div className="FlipCard">
-      <Link to={"article/" + (props.article.id)}>
-        <img src={img()} alt="" />
-        <div className="text">
-          <h1>{props.article.title}</h1>
-          {/*293 lettere*/}
-          <p>{props.article.text?.substring(0, 370)}</p>
-          <Button type="primary" shape="round" size="large">
-            Vai all'articolo
-        </Button>
+      <Link to={"/article/" + (props.article.id)}>
+        <div className="flip-card">
+          <div className="flip-card-inner">
+            <div className="flip-card-front">
+              <h1 className="title">{props.article.title}</h1>
+              <img src={img()} alt="" />
+            </div>
+            <div className="flip-card-back">
+              <div className="text">
+                <h1>{props.article.title}</h1>
+                <p>{props.article.text}</p>
+              </div>
+              <Button type="primary" shape="round" size="large">
+                Vai all'articolo
+            </Button>
+            </div>
+          </div>
         </div>
       </Link>
-    </div>
+    </div >
   )
 }
 

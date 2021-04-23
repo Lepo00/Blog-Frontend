@@ -1,5 +1,5 @@
 import './ArticleDetail.scss';
-import AuthorCard from '../ui/authorCard/AuthorCard';
+import {AuthorCard} from '../ui';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { detailArticle } from '../../store/actions';

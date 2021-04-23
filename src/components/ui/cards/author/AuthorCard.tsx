@@ -1,4 +1,4 @@
-import  {User}  from '../../../models';
+import  {User}  from '../../../../models';
 import './AuthorCard.scss';
 
 const AuthorCard = (props:{author?:User}) => {

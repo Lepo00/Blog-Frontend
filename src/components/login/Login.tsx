@@ -20,8 +20,7 @@ const Login = () => {
     <div className="Login">
       {logged ? <Redirect to="/home"/> : null}
       <img src={theme === "darkTheme" ? "./assets/logo-light.png" : "./assets/logo-dark.png"} className="logo" alt="" />
-      {/*<h1>Login</h1>*/}
-      <h1>{logged ? "loggato" : "non loggato"}</h1>
+      <h1>Login</h1>
       <Form
         size="large"
         name="login"

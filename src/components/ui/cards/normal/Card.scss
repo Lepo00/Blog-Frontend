@@ -4,24 +4,24 @@
     height: 100%;
     border-radius: 5px;
     cursor: pointer;
-    a{
+    a {
         color: var(--font);
     }
     &:hover {
         box-shadow: 5px 5px 15px -3px rgba(0, 0, 0, 0.8);
         img {
             transition: 0.6s;
-            height: 30%;
+            height: 38%;
             border-radius: 5px;
             padding: 2px;
         }
         .text {
             transition: 0.8s;
-            height: 70%;
+            height: 62%;
         }
         button {
-            display: inline;
-            margin: 0;
+            transition: 0.8s;
+            display: block;
         }
     }
     img {
@@ -33,7 +33,7 @@
     }
     .text {
         height: 50%;
-        padding: 0 3px;
+        padding: 0 10px;
         overflow: hidden;
         text-overflow: ellipsis;
     }
@@ -43,16 +43,20 @@
     }
     button {
         display: none;
-        background-color: var(--bg);
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        width: 50px;
+        height: 50px;
+        background-color: var(--invFont);
         color: var(--font);
-        border: 1px solid var(--font);
-        &:hover{
-            background-color: var(--color1);
-        }
-        &:active, &:focus{
+        border: 3px solid var(--font);
+        &:active,
+        &:focus,
+        &:hover {
             background-color: var(--color2);
+            border: 3px solid var(--invFont);
         }
-        
     }
     p {
         position: relative;
