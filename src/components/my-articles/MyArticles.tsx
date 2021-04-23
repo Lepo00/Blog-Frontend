@@ -3,7 +3,7 @@ import { Button, Tooltip, Pagination, Modal } from 'antd';
 import { DeleteOutlined, SearchOutlined, FormOutlined, ExclamationCircleOutlined } from '@ant-design/icons';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { deleteArticle, myArticles, myArticlesSize } from '../../store/actions';
+import { deleteArticle, myArticles } from '../../store/actions';
 import { RootState } from '../../store/reducers';
 import { Article } from '../../models';
 import { Link } from 'react-router-dom';
@@ -14,7 +14,6 @@ const MyPosts = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(myArticles(0, 10));
-    dispatch(myArticlesSize())
   }, [dispatch]);
   const { articles } = useSelector((state: RootState) => state.articleReducers);
   const { size } = useSelector((state: RootState) => state.articleReducers);

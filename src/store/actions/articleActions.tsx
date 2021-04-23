@@ -9,6 +9,7 @@ export const myArticles = (page:number, size:number): AppThunk => async dispatch
             type: "MY_ARTICLES",
             payload: data
         })
+        dispatch(myArticlesSize())
     }catch{
         dispatch({
             type: "MY_ARTICLES",
@@ -21,7 +22,7 @@ export const myArticlesSize = (): AppThunk => async dispatch => {
     const { data } = await axios.get('user/my-articles-size');
     dispatch({
         type: "MY_ARTICLE_SIZE",
-        payload: data.message
+        payload: data
     })
 }
 
@@ -71,4 +72,29 @@ export const articlesByCategory = (category:string, page:number, size:number): A
             payload: []
         })
     }
+}
+
+export const searchArticles = (title:string, page:number, size:number): AppThunk => async dispatch => {
+    const params = new URLSearchParams([['page', page+''],['size',size+''],['title',title]]);
+    try {
+        const { data } = await axios.get<Article[]>('article/search',{params});
+        dispatch({
+            type: "SEARCH_ARTICLES",
+            payload: data
+        })
+        dispatch(searchSize(title));
+    }catch{
+        dispatch({
+            type: "SEARCH_ARTICLES",
+            payload: []
+        })
+    }
+}
+
+export const searchSize = (title:string): AppThunk => async dispatch => {
+    const { data } = await axios.get('article/search-size', { params: { title } });
+    dispatch({
+        type: "SEARCH_SIZE",
+        payload: data
+    })
 }
