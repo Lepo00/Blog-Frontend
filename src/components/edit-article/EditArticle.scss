@@ -1,0 +1,45 @@
+.EditArticle{
+    background-color: var(--bg);
+    padding:20px 0;
+    .editForm {
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.6);
+        color: var(--font);
+        border-radius: 20px;
+        padding: 30px;
+        width: 800px;
+        margin: 0 auto;
+        background-color: var(--invFont);
+        @media only screen and (max-width: 830px) {
+            width: 95%;
+        }
+        .upload {
+            width: 100%;
+        }
+        .checkboxes {
+            input {
+                float: left;
+            }
+        }
+        .ant {
+            &-upload {
+                width: 100%;
+            }
+            &-btn-lg {
+                width: 100%;
+                &:focus,
+                &:hover {
+                    color: var(--color2);
+                    border: var(--color2) 1px solid;
+                }
+            }
+            &-checkbox-wrapper {
+                width: 250px;
+                color: var(--font);
+            }
+        }
+        textarea.ant-input {
+            min-height: 80px;
+            overflow-y: hidden;
+        }
+    }
+}

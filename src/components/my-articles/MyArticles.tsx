@@ -12,12 +12,8 @@ const { confirm } = Modal;
 
 const MyPosts = () => {
   const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(myArticles(0, 10));
-  }, [dispatch]);
-  const { articles } = useSelector((state: RootState) => state.articleReducers);
-  const { size } = useSelector((state: RootState) => state.articleReducers);
-  articles.sort((a, b) => { return b.id! - a.id! });
+  useEffect(() => { dispatch(myArticles(0, 10)) }, [dispatch]);
+  const { articles, size } = useSelector((state: RootState) => state.articleReducers);
 
   function pageChange(page: any, pageSize: any) {
     dispatch(myArticles(page - 1, pageSize));
@@ -33,6 +29,7 @@ const MyPosts = () => {
       title: 'Sicuro di voler eliminare questo articolo?',
       icon: <ExclamationCircleOutlined />,
       content: 'Queesto articolo non potrà essere ripristinato',
+      cancelText: 'Annulla',
       onOk() { removeArticle(id) },
       onCancel() { },
     });
@@ -60,9 +57,9 @@ const MyPosts = () => {
                 <Button shape="circle" size="large" icon={<SearchOutlined />} />
               </Tooltip>
             </Link>
-            <Link to={"/edit-article/" + article.id}>
+            <Link to={"/edit-article/"+article.id}>
               <Tooltip title="Modifica Articolo">
-                <Button type="primary" shape="circle" size="large" icon={<FormOutlined />} />
+                <Button type="primary" shape="circle" size="large" icon={<FormOutlined />}/>
               </Tooltip>
             </Link>
             <Tooltip title="Elimina articolo" color="red">
