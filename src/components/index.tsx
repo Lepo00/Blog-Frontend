@@ -11,6 +11,7 @@ import NotFound from './not-found/NotFound';
 import Profile from './profile/Profile';
 import EditProfile from './edit-profile/EditProfile';
 import Category from './category/Category';
+import Search from './search/Search';
 
 
 export {
@@ -27,4 +28,5 @@ export {
     Profile,
     EditProfile,
     Category,
+    Search,
 }

@@ -1,7 +1,7 @@
 import './Menu.scss';
-import { NavLink, Link } from 'react-router-dom';
+import { NavLink, Link, Redirect } from 'react-router-dom';
 import { Switch } from 'antd';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { Theme } from "react-switch-theme";
 import { useLocation } from 'react-router-dom';
 import { categories } from '../../models/Categories';
@@ -17,6 +17,14 @@ function Menu() {
     const path = useLocation().pathname.toLocaleLowerCase();
     const logged = useSelector((state: RootState) => state.userReducers);
 
+    const [search, setSearch] = useState("");
+    const [redirect, setRedirect] = useState(false);
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setRedirect(true);
+        setSearch(e.target.value);
+    }
+
     function subMenuProfile() {
         return isLoggedIn() || logged ?
             <ol className="sub-menu">
@@ -30,9 +38,14 @@ function Menu() {
             </ol>
     }
 
+    if (path.startsWith('search')) {
+        setRedirect(false);
+    }
+
     if (path === "/login" || path === "/register") {
         return null;
     }
+
     else {
         return (
             <nav className="menu">
@@ -65,7 +78,7 @@ function Menu() {
                     <li className="menu-item search">
                         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossOrigin="anonymous" />
                         <form className="form">
-                            <input type="search" className="input" />
+                            <input type="search" className="input" onChange={handleChange} />
                             <i className="fa fa-search"></i>
                         </form>
                     </li>
@@ -81,6 +94,7 @@ function Menu() {
                             onChange={toogleTheme}
                         /></li>
                 </ol>
+                {redirect && search !== '' ? <Redirect to={"/search/" + search} /> : null}
             </nav>
         )
     }

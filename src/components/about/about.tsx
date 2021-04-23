@@ -1,17 +1,22 @@
 import './About.scss';
 import { useDispatch, useSelector } from 'react-redux';
-import { increment } from '../../store/actions';
+import { searchArticles } from '../../store/actions';
 import { RootState } from '../../store/reducers';
+import { useEffect } from 'react';
 
-function About(props:any) {
+function About(props: any) {
     const dispatch = useDispatch();
-    const counter = useSelector((state: RootState) => state.counterReducers);
+    const { articles, size } = useSelector((state: RootState) => state.articleReducers);
+
+    useEffect(() => {dispatch(searchArticles("xbox",0,10)) }, [dispatch])
 
     return (
         <div className="About">
             <h1>About</h1>
-            <h4>Counter: {counter}</h4>
-            <button onClick={() => dispatch(increment(5))}>Increase</button>
+            {articles.map((article, i)=>(
+                <h1>{article.title}</h1>
+            ))}
+            <h1>{size!}</h1>
         </div>
     )
 }
