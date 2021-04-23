@@ -1,16 +1,16 @@
 import { instance as axios, noToken } from '../../config/axiosConfig';
 import { Article, AppThunk } from '../../models';
 
-export const myArticles = (page:number, size:number): AppThunk => async dispatch => {
-    const params = new URLSearchParams([['page', page+''],['size',size+'']]);
+export const myArticles = (page: number, size: number): AppThunk => async dispatch => {
+    const params = new URLSearchParams([['page', page + ''], ['size', size + '']]);
     try {
-        const { data } = await axios.get<Article[]>('user/my-articles',{params});
+        const { data } = await axios.get<Article[]>('user/my-articles', { params });
         dispatch({
             type: "MY_ARTICLES",
             payload: data
         })
         dispatch(myArticlesSize())
-    }catch{
+    } catch {
         dispatch({
             type: "MY_ARTICLES",
             payload: []
@@ -50,23 +50,23 @@ export const createArticle = (article: FormData): AppThunk => async dispatch => 
     })
 }
 
-
 export const deleteArticle = (id: number): AppThunk => async dispatch => {
-    await axios.delete('article/'+id);
+    await axios.delete('article/' + id);
     dispatch({
         type: "DELETE_ARTICLE",
     })
 }
 
-export const articlesByCategory = (category:string, page:number, size:number): AppThunk => async dispatch => {
-    const params = new URLSearchParams([['page', page+''],['size',size+''],['category',category]]);
+export const articlesByCategory = (category: string, page: number, size: number): AppThunk => async dispatch => {
+    const params = new URLSearchParams([['page', page + ''], ['size', size + ''], ['category', category]]);
     try {
-        const { data } = await axios.get<Article[]>('article',{params});
+        const { data } = await axios.get<Article[]>('article', { params });
         dispatch({
             type: "ARTICLES_BY_CATEGORY",
             payload: data
         })
-    }catch{
+        dispatch(categorySize(category));
+    } catch {
         dispatch({
             type: "ARTICLES_BY_CATEGORY",
             payload: []
@@ -74,16 +74,25 @@ export const articlesByCategory = (category:string, page:number, size:number): A
     }
 }
 
-export const searchArticles = (title:string, page:number, size:number): AppThunk => async dispatch => {
-    const params = new URLSearchParams([['page', page+''],['size',size+''],['title',title]]);
+export const categorySize = (category: string): AppThunk => async dispatch => {
+    const params = new URLSearchParams([['category', category]]);
+    const { data } = await axios.get<Article[]>('article/category-size', { params });
+    dispatch({
+        type: "CATEGORY_SIZE",
+        payload: data
+    })
+}
+
+export const searchArticles = (title: string, page: number, size: number): AppThunk => async dispatch => {
+    const params = new URLSearchParams([['page', page + ''], ['size', size + ''], ['title', title]]);
     try {
-        const { data } = await axios.get<Article[]>('article/search',{params});
+        const { data } = await axios.get<Article[]>('article/search', { params });
         dispatch({
             type: "SEARCH_ARTICLES",
             payload: data
         })
         dispatch(searchSize(title));
-    }catch{
+    } catch {
         dispatch({
             type: "SEARCH_ARTICLES",
             payload: []
@@ -91,7 +100,7 @@ export const searchArticles = (title:string, page:number, size:number): AppThunk
     }
 }
 
-export const searchSize = (title:string): AppThunk => async dispatch => {
+export const searchSize = (title: string): AppThunk => async dispatch => {
     const { data } = await axios.get('article/search-size', { params: { title } });
     dispatch({
         type: "SEARCH_SIZE",

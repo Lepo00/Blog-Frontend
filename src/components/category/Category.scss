@@ -1,19 +1,51 @@
-.Category{
+.Category {
     background-color: var(--bg);
     width: 100%;
     min-height: 90vh;
-    .grid-container{
+    .grid-container {
         width: 100%;
         padding: 10px 20px;
     }
 
-    h1{
+    h1 {
         text-transform: capitalize;
     }
-    .ant{
-        &-col{
+    .ant {
+        &-col {
             height: 430px;
             margin: 20px 0;
+        }
+
+        &-btn-icon-only.ant-btn-lg {
+            padding: 0;
+            font-size: 0;
+        }
+        &-pagination {
+            margin: 20px auto;
+            font-size: 20px;
+            color: var(--font);
+            &-item {
+                background-color: var(--invFont);
+                &-active {
+                    border: 2px solid var(--font);
+                }
+                &-link {
+                    background-color: var(--invFont);
+                    color: var(--font);
+                }
+                a {
+                    color: var(--font);
+                }
+            }
+        }
+        &-select {
+            &-selection-item {
+                font-size: 20px;
+            }
+            &-selector {
+                background-color: var(--invFont) !important;
+                color: var(--font);
+            }
         }
     }
 }

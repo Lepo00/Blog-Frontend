@@ -18,7 +18,7 @@ const articleReducer = (state = initialState, action: Action) => {
                 ...state,
                 detail: action.payload as Article,
             }
-        case "MY_ARTICLE_SIZE": case "SEARCH_SIZE":
+        case "MY_ARTICLE_SIZE": case "SEARCH_SIZE": case "CATEGORY_SIZE":
             return {
                 ...state,
                 size: action.payload as number,
