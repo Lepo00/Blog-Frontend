@@ -12,6 +12,7 @@ import Profile from './profile/Profile';
 import EditProfile from './edit-profile/EditProfile';
 import Category from './category/Category';
 import Search from './search/Search';
+import EditArticle from './edit-article/EditArticle';
 
 
 export {
@@ -29,4 +30,5 @@ export {
     EditProfile,
     Category,
     Search,
+    EditArticle
 }
