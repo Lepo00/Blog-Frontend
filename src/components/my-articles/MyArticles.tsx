@@ -33,7 +33,7 @@ const MyPosts = () => {
       title: 'Sicuro di voler eliminare questo articolo?',
       icon: <ExclamationCircleOutlined />,
       content: 'Queesto articolo non potrà essere ripristinato',
-      onOk() {removeArticle(id)},
+      onOk() { removeArticle(id) },
       onCancel() { },
     });
   }
@@ -60,9 +60,11 @@ const MyPosts = () => {
                 <Button shape="circle" size="large" icon={<SearchOutlined />} />
               </Tooltip>
             </Link>
-            <Tooltip title="Modifica Articolo">
-              <Button type="primary" shape="circle" size="large" icon={<FormOutlined />} />
-            </Tooltip>
+            <Link to={"/edit-article/" + article.id}>
+              <Tooltip title="Modifica Articolo">
+                <Button type="primary" shape="circle" size="large" icon={<FormOutlined />} />
+              </Tooltip>
+            </Link>
             <Tooltip title="Elimina articolo" color="red">
               <Button onClick={() => showPromiseConfirm(article.id!)} type="primary" danger shape="circle" size="large" icon={<DeleteOutlined />} />
             </Tooltip>

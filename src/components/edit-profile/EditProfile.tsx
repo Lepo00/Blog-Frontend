@@ -5,7 +5,6 @@ import { RootState } from '../../store/reducers';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { myProfile, updateProfile } from '../../store/actions';
-import { User } from '../../models';
 const { TextArea } = Input;
 
 const EditProfile = () => {
@@ -15,7 +14,6 @@ const EditProfile = () => {
 
   function createUser(values: any) {
     const merged = { ...profile, ...values };
-    console.log(merged as User);
     dispatch(updateProfile(merged));
   }
 
