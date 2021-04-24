@@ -2,4 +2,4 @@ export {login, logout, register, myProfile, updateProfile, uploadPhoto} from './
 export {increment} from './counterActions';
 export {myArticles, detailArticle, getFirstArticles, createArticle
         ,myArticlesSize, deleteArticle, articlesByCategory, categorySize, 
-        searchArticles, searchSize} from './articleActions';
+        searchArticles, searchSize, updateArticle} from './articleActions';

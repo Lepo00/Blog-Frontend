@@ -107,3 +107,11 @@ export const searchSize = (title: string): AppThunk => async dispatch => {
         payload: data
     })
 }
+
+export const updateArticle = (article: Article): AppThunk => async dispatch => {
+    const { data } = await axios.put('article/'+article.id, article);
+    dispatch({
+        type: "UPDATE_ARTICLE",
+        payload: data
+    })
+}
