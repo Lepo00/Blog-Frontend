@@ -5,6 +5,7 @@ import { searchArticles } from '../../store/actions';
 import { RootState } from '../../store/reducers';
 import { Row, Col, Pagination } from 'antd';
 import { FlipCard } from '../ui';
+import { Redirect } from 'react-router';
 
 const Search = (props: any) => {
   const dispatch = useDispatch();

@@ -12,12 +12,14 @@ const FlipCard = (props: { article: Article }) => {
     <div className="FlipCard">
       <Link to={"/article/" + (props.article.id)}>
         <div className="flip-card">
-          {props.article.title ?
-            <div className="flip-card-inner">
+          <div className="flip-card-inner">
+            {props.article.title ?
               <div className="flip-card-front">
                 <h1 className="title">{props.article.title}</h1>
                 <img src={img()} alt="" />
               </div>
+              : <div><Skeleton active /><Skeleton active /><Skeleton active /></div>}
+            {props.article.title ?
               <div className="flip-card-back">
                 <div className="text">
                   <h1>{props.article.title}</h1>
@@ -25,10 +27,10 @@ const FlipCard = (props: { article: Article }) => {
                 </div>
                 <Button type="primary" shape="round" size="large">
                   Vai all'articolo
-            </Button>
+                </Button>
               </div>
+              :null}
             </div>
-            : <Skeleton active />}
         </div>
       </Link>
     </div >

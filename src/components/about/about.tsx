@@ -1,22 +1,21 @@
 import './About.scss';
-import { useDispatch, useSelector } from 'react-redux';
-import { searchArticles } from '../../store/actions';
-import { RootState } from '../../store/reducers';
-import { useEffect } from 'react';
+import { Button, message } from 'antd';
+import { RiseOutlined } from '@ant-design/icons';
 
 function About(props: any) {
-    const dispatch = useDispatch();
-    const { articles, size } = useSelector((state: RootState) => state.articleReducers);
 
-    useEffect(() => {dispatch(searchArticles("xbox",0,10)) }, [dispatch])
+    function wip() {
+        message.info({
+            content: 'Questa pagina è in fase di costruzione, torna più tardi',
+            icon: <RiseOutlined style={{ "fontSize": "30px" }} />,
+            style: { fontSize: '25px', },
+        });
+    }
 
     return (
         <div className="About">
-            <h1>About</h1>
-            {articles.map((article, i)=>(
-                <h1>{article.title}</h1>
-            ))}
-            <h1>{size!}</h1>
+            <h1>Chi sono</h1>
+            <Button size="large" onClick={wip}>Cliccami</Button>
         </div>
     )
 }

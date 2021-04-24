@@ -1,7 +1,7 @@
 import './Menu.scss';
-import { NavLink, Link, Redirect } from 'react-router-dom';
+import { NavLink, Link, Redirect, useHistory } from 'react-router-dom';
 import { Switch } from 'antd';
-import { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Theme } from "react-switch-theme";
 import { useLocation } from 'react-router-dom';
 import { categories } from '../../models/Categories';
@@ -16,13 +16,16 @@ function Menu() {
     const [theme, toogleTheme] = useContext(Theme);
     const path = useLocation().pathname.toLocaleLowerCase();
     const logged = useSelector((state: RootState) => state.userReducers);
-
+    let history = useHistory();
     const [search, setSearch] = useState("");
-    const [redirect, setRedirect] = useState(false);
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setRedirect(true);
+    const searchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setSearch(e.target.value);
+        console.log(search);
+    }
+
+    function searchRedirect () {
+        history.push("/search/" + search);
     }
 
     function subMenuProfile() {
@@ -38,10 +41,6 @@ function Menu() {
             </ol>
     }
 
-    if (path.startsWith('search')) {
-        setRedirect(false);
-    }
-
     if (path === "/login" || path === "/register") {
         return null;
     }
@@ -55,7 +54,9 @@ function Menu() {
                             <img src={theme === "darkTheme" ? "../assets/logo-light.png" : "../assets/logo-dark.png"} alt="" />
                         </NavLink>
                     </li>
-                    <li className="menu-item"><NavLink activeClassName="selected" to="/About">Chi sono</NavLink></li>
+                    <li className="menu-item">
+                        <NavLink activeClassName="selected" to="/About">Chi sono</NavLink>
+                    </li>
                     <li className="menu-item">
                         <Link to="/">Categorie</Link>
                         <ol className="sub-menu">
@@ -78,8 +79,10 @@ function Menu() {
                     <li className="menu-item search">
                         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossOrigin="anonymous" />
                         <form className="form">
-                            <input type="search" className="input" onChange={handleChange} />
-                            <i className="fa fa-search"></i>
+                            <input type="search" className="input"
+                                onChange={(e: any) => searchChange(e)}
+                                value={search} />
+                            <i className="fa fa-search" onClick={searchRedirect}></i>
                         </form>
                     </li>
                     <li className="menu-item toggle-theme">
@@ -94,7 +97,6 @@ function Menu() {
                             onChange={toogleTheme}
                         /></li>
                 </ol>
-                {redirect && search !== '' ? <Redirect to={"/search/" + search} /> : null}
             </nav>
         )
     }
