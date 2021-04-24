@@ -3,35 +3,41 @@ import { Form, Input, Button, Select, Row, Col, Skeleton } from 'antd';
 import { categories } from '../../models/Categories';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { detailArticle } from '../../store/actions';
+import { detailArticle, updateArticle } from '../../store/actions';
 import { RootState } from '../../store/reducers';
+import { useHistory } from 'react-router-dom';
 const { TextArea } = Input;
 const { Option } = Select;
 
 const ArticleEdit = (props: any) => {
   const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(detailArticle(props.match.params.id));
-  }, [dispatch, props]);
-  const {detail}=useSelector((state: RootState) => state.articleReducers);
+  useEffect(() => { dispatch(detailArticle(props.match.params.id)) }, [dispatch, props]);
+  const { detail } = useSelector((state: RootState) => state.articleReducers);
+  const history = useHistory();
 
-  const initForm = {
-    ...detail,
-    tags: detail.tags?.map(tag => tag.code)
+  function img() {
+    const id = detail?.image?.id;
+    return id ? "http://localhost:8080/blog/image/display/" + id : "../assets/no-image.png";
   }
 
-  console.log(initForm);
+  async function update(values: any) {
+    detail.tags = [];
+    values.tags.map((tag: string) => (detail.tags?.push({ code: tag })));
+    values.tags = detail.tags;
+    await dispatch(updateArticle({ ...detail, ...values }));
+    history.push('/home');
+  }
 
-  function update() { }
   return (
     <div className="EditArticle">
       <div className="editForm">
         <h1>Modifica articolo {detail.id}</h1>
-        {initForm.title ?<Form
+        <img src={img()} alt="" />
+        {detail.title ? <Form
           name="create-post"
           onFinish={update}
           size="large"
-          initialValues={initForm}
+          initialValues={{ ...detail, tags: detail.tags?.map(tag => tag.code) }}
         >
           <Form.Item name="title" hasFeedback
             rules={[{ required: true, message: 'il titolo è obbligatorio' }, {
@@ -74,7 +80,7 @@ const ArticleEdit = (props: any) => {
               Modifica articolo
             </Button>
           </Form.Item>
-        </Form>:<Skeleton active />}
+        </Form> : <Skeleton active />}
       </div>
     </div>
   )
