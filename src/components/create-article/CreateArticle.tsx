@@ -5,13 +5,15 @@ import { useDispatch } from 'react-redux';
 import { createArticle } from '../../store/actions';
 import { Article } from '../../models';
 import { categories } from '../../models/Categories';
+import { useHistory } from 'react-router-dom';
 const { TextArea } = Input;
 const { Option } = Select;
 
 const CreateArticle = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
 
-  const create = (values: any) => {
+  const create = async (values: any) => {
     const article: Article = {
       "title": values.title,
       "text": values.text,
@@ -27,7 +29,8 @@ const CreateArticle = () => {
       formData.append("image", values.image.file);
     formData.append('article', new Blob([JSON.stringify(article)], { type: "application/json" }));
 
-    dispatch(createArticle(formData));
+    await dispatch(createArticle(formData));
+    history.push('/home');
   };
 
   return (

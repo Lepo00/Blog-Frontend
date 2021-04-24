@@ -21,7 +21,7 @@ const MyPosts = () => {
 
   function img(article: Article) {
     const id = article?.image?.id;
-    return id ? "http://localhost:8080/blog/image/display/" + id : "./assets/no-image.png";
+    return id ? "http://localhost:8080/blog/image/display/" + id : "../assets/no-image.png";
   }
 
   function showPromiseConfirm(id: number) {
