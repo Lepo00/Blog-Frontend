@@ -1,7 +1,7 @@
 import './Menu.scss';
-import { NavLink, Link, Redirect, useHistory } from 'react-router-dom';
+import { NavLink, Link, useHistory } from 'react-router-dom';
 import { Switch } from 'antd';
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Theme } from "react-switch-theme";
 import { useLocation } from 'react-router-dom';
 import { categories } from '../../models/Categories';
@@ -15,14 +15,9 @@ function Menu() {
     // eslint-disable-next-line
     const [theme, toogleTheme] = useContext(Theme);
     const path = useLocation().pathname.toLocaleLowerCase();
-    const logged = useSelector((state: RootState) => state.userReducers);
-    let history = useHistory();
+    const {logged} = useSelector((state: RootState) => state.userReducers);
+    const history = useHistory();
     const [search, setSearch] = useState("");
-
-    const searchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setSearch(e.target.value);
-        console.log(search);
-    }
 
     function searchRedirect () {
         history.push("/search/" + search);
@@ -80,7 +75,7 @@ function Menu() {
                         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossOrigin="anonymous" />
                         <form className="form">
                             <input type="search" className="input"
-                                onChange={(e: any) => searchChange(e)}
+                                onChange={(e: any) => setSearch(e.target.value)}
                                 value={search} />
                             <i className="fa fa-search" onClick={searchRedirect}></i>
                         </form>
