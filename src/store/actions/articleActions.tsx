@@ -116,3 +116,19 @@ export const updateArticle = (article: Article): AppThunk => async dispatch => {
         payload: data
     })
 }
+
+export const pendingArticles = (): AppThunk => async dispatch => {
+    try {
+        const { data } = await axios.get<Article[]>('article/pending');
+        dispatch({
+            type: "PENDING_ARTICLES",
+            payload: data
+        })
+        dispatch(myArticlesSize())
+    } catch {
+        dispatch({
+            type: "PENDING_ARTICLES",
+            payload: []
+        })
+    }
+}

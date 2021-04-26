@@ -8,19 +8,27 @@ const initialState: ArticleState = {
 
 const articleReducer = (state = initialState, action: Action) => {
     switch (action.type) {
-        case "MY_ARTICLES": case "FIRST_ARTICLES": case "ARTICLES_BY_CATEGORY": case "SEARCH_ARTICLES":
+        case "MY_ARTICLES":
+        case "FIRST_ARTICLES":
+        case "ARTICLES_BY_CATEGORY":
+        case "SEARCH_ARTICLES":
+        case "PENDING_ARTICLES":
             return {
                 ...state,
                 articles: action.payload as Article[],
                 detail: {},
             }
-        case "DETAIL_ARTICLE" :case "CREATE_ARTICLE":case "UPDATE_ARTICLE":
+        case "DETAIL_ARTICLE":
+        case "CREATE_ARTICLE":
+        case "UPDATE_ARTICLE":
             return {
                 ...state,
                 detail: action.payload as Article,
-                articles:[]
+                articles: []
             }
-        case "MY_ARTICLE_SIZE": case "SEARCH_SIZE": case "CATEGORY_SIZE":
+        case "MY_ARTICLE_SIZE":
+        case "SEARCH_SIZE":
+        case "CATEGORY_SIZE":
             return {
                 ...state,
                 size: action.payload as number,
