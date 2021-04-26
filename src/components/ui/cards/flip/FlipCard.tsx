@@ -29,8 +29,8 @@ const FlipCard = (props: { article: Article }) => {
                   Vai all'articolo
                 </Button>
               </div>
-              :null}
-            </div>
+              : null}
+          </div>
         </div>
       </Link>
     </div >

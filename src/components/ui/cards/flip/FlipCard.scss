@@ -82,6 +82,9 @@
             height: 85%;
             text-overflow: ellipsis;
             overflow: hidden;
+            p{
+                text-align: justify;
+            }
         }
     }
 }
