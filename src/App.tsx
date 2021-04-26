@@ -2,10 +2,11 @@ import './App.scss';
 import 'antd/dist/antd.css';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { About, Contact, Home, Menu, ArticleDetail, Login, Register, CreateArticle,
-         MyArticles, NotFound, Profile, EditProfile, Category, Search, EditArticle } from './components';
+         MyArticles, NotFound, Profile, EditProfile, Category, Search, EditArticle,
+         Admin } from './components';
 import { ThemeProvider } from "react-switch-theme";
 import { colors, activeMode } from './styles/variables';
-import { PrivateRoute } from './guards';
+import { AdminRoute, PrivateRoute } from './guards';
 
 function App() {
     return (
@@ -27,6 +28,7 @@ function App() {
                         <PrivateRoute path="/my-articles" component={MyArticles} />
                         <PrivateRoute path="/profile" component={Profile} />
                         <PrivateRoute path="/edit-profile" component={EditProfile} />
+                        <AdminRoute path="/admin" component={Admin} />
                         <Route path="*" component={NotFound} />
                     </Switch>
                 </div>
