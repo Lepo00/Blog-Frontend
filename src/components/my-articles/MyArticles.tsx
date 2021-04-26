@@ -37,7 +37,6 @@ const MyPosts = () => {
 
   function removeArticle(id: number) {
     dispatch(deleteArticle(id));
-    dispatch(myArticles(0, 10));
   }
 
   return (

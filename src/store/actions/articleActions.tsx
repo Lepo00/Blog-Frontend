@@ -55,6 +55,7 @@ export const deleteArticle = (id: number): AppThunk => async dispatch => {
     dispatch({
         type: "DELETE_ARTICLE",
     })
+    dispatch(myArticles(0,10));
 }
 
 export const articlesByCategory = (category: string, page: number, size: number): AppThunk => async dispatch => {
