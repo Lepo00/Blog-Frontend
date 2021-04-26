@@ -9,6 +9,7 @@ export const login = (user: LoginUser): AppThunk => async dispatch => {
             payload: res.status === 200
         })
         user.remember ? localStorage.setItem("jwt", res.data.message) : sessionStorage.setItem("jwt", res.data.message);
+        dispatch(myProfile());
     } catch {
         dispatch({
             type: "LOGIN",
