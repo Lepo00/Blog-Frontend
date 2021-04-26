@@ -15,11 +15,11 @@ function Menu() {
     // eslint-disable-next-line
     const [theme, toogleTheme] = useContext(Theme);
     const path = useLocation().pathname.toLocaleLowerCase();
-    const {logged} = useSelector((state: RootState) => state.userReducers);
+    const { logged, profile } = useSelector((state: RootState) => state.userReducers);
     const history = useHistory();
     const [search, setSearch] = useState("");
 
-    function searchRedirect () {
+    function searchRedirect() {
         history.push("/search/" + search);
     }
 
@@ -67,6 +67,11 @@ function Menu() {
                             <li className="menu-item"><Link to="/my-articles">Gestisci i miei articoli</Link></li>
                         </ol>
                     </li>
+                    {profile.role === 'ADMIN' ?
+                        <li className="menu-item">
+                            <NavLink activeClassName="selected" to="/Admin">Admin</NavLink>
+                        </li>
+                        : null}
                     <li className="menu-item">
                         <Link to="/profile">Profilo</Link>
                         {subMenuProfile()}
