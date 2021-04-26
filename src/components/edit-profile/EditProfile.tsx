@@ -5,16 +5,19 @@ import { RootState } from '../../store/reducers';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { myProfile, updateProfile } from '../../store/actions';
+import { useHistory } from 'react-router-dom';
 const { TextArea } = Input;
 
 const EditProfile = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
   useEffect(() => { dispatch(myProfile()) }, [dispatch]);
   let { profile } = useSelector((state: RootState) => state.userReducers);
 
   function createUser(values: any) {
     const merged = { ...profile, ...values };
     dispatch(updateProfile(merged));
+    history.push('/profile');
   }
 
   return (
