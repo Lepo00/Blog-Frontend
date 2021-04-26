@@ -15,7 +15,7 @@ function Menu() {
     const history = useHistory();
     const [theme, toogleTheme] = useContext(Theme);
     const path = useLocation().pathname.toLocaleLowerCase();
-    const { logged } = useSelector((state: RootState) => state.userReducers);
+    const { logged, profile } = useSelector((state: RootState) => state.userReducers);
     const [search, setSearch] = useState("");
 
     function searchRedirect() {
@@ -64,7 +64,7 @@ function Menu() {
                             <li className="menu-item"><Link to="/my-articles">Gestisci i miei articoli</Link></li>
                         </ol>
                     </li>
-                    {isAdmin() ?
+                    {profile.role==='ADMIN' || isAdmin() ?
                         <li className="menu-item">
                             <NavLink activeClassName="selected" to="/Admin">Admin</NavLink>
                         </li>

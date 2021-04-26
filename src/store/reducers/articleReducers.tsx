@@ -12,7 +12,7 @@ const articleReducer = (state = initialState, action: Action) => {
             return {
                 ...state,
                 articles: action.payload as Article[],
-                detail: {}
+                detail: {},
             }
         case "DETAIL_ARTICLE" :case "CREATE_ARTICLE":case "UPDATE_ARTICLE":
             return {

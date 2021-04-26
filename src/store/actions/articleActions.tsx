@@ -26,8 +26,8 @@ export const myArticlesSize = (): AppThunk => async dispatch => {
     })
 }
 
-export const getFirstArticles = (limit: number): AppThunk => async dispatch => {
-    const { data } = await noToken.get<Article[]>('article/limit/' + limit);
+export const getFirstArticles = (): AppThunk => async dispatch => {
+    const { data } = await noToken.get<Article[]>('article/limit');
     dispatch({
         type: "FIRST_ARTICLES",
         payload: data

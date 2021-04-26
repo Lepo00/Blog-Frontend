@@ -7,7 +7,7 @@ import { getFirstArticles } from '../../store/actions';
 
 function Home() {
     const dispatch = useDispatch();
-    useEffect(() => { dispatch(getFirstArticles(7)) }, [dispatch])
+    useEffect(() => { dispatch(getFirstArticles()) }, [dispatch])
     const { articles } = useSelector((state: RootState) => state.articleReducers);
 
     return (

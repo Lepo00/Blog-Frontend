@@ -7,7 +7,7 @@ import { RootState } from '../../store/reducers';
 import { ItemCrud } from '../ui';
 
 
-const MyPosts = () => {
+const MyArticles = () => {
   const dispatch = useDispatch();
   useEffect(() => { dispatch(myArticles(0, 10)) }, [dispatch]);
   const { articles, size } = useSelector((state: RootState) => state.articleReducers);
@@ -20,13 +20,13 @@ const MyPosts = () => {
     <div className="MyPosts">
       <h1>I miei articoli</h1>
       {articles.map(article => (
-        <ItemCrud article={article} />
+        <ItemCrud article={article} key={article.id}/>
       ))}
       <Pagination total={size} showSizeChanger onChange={pageChange}
-        showTotal={(total, range) => `${range[0]}-${range[1]} di ${total} articoli`}
+        showTotal={(total, range) => range[0]+'-'+range[1] +' di '+ total+ ' articoli'}
         pageSizeOptions={['5', '10', '15', '20']} />
     </div>
   )
 }
 
-export default MyPosts;
+export default MyArticles;
