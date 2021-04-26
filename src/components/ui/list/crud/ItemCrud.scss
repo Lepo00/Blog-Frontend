@@ -1,0 +1,44 @@
+.ItemCrud {
+    display: grid;
+    grid-template-columns: 0.25fr 0.95fr 0.25fr;
+    grid-template-rows: 70px;
+    grid-template-areas: "image title buttons";
+    width: 900px;
+    margin: 15px auto;
+    background-color: var(--invFont);
+    border-radius: 10px;
+    @media only screen and (max-width: 920px) {
+        width: auto;
+        margin: 15px 2%;
+    }
+    .title,
+    .buttons {
+        line-height: 70px;
+        overflow: hidden;
+    }
+
+    .image {
+        grid-area: image;
+        img {
+            width: 100%;
+            height: 100%;
+            padding: 3%;
+            border-radius: 10px;
+        }
+        @media only screen and (max-width: 500px) {
+            display: none;
+        }
+    }
+
+    .title {
+        grid-area: title;
+    }
+
+    .buttons {
+        grid-area: buttons;
+        min-width: 190px;
+        button {
+            margin: 0 2%;
+        }
+    }
+}
