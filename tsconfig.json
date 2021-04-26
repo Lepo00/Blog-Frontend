@@ -21,6 +21,8 @@
     "jsx": "react-jsx"
   },
   "include": [
-    "src"
-, "react-switch-theme.d.ts"  ]
+    "src",
+    "react-switch-theme.d.ts",
+    "ckEditor.d.ts"
+  ]
 }
