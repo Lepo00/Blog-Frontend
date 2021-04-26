@@ -21,6 +21,8 @@ export const login = (user: LoginUser): AppThunk => async dispatch => {
 export const logout = () => {
     sessionStorage.removeItem("jwt");
     localStorage.removeItem("jwt");
+    sessionStorage.removeItem("role");
+    localStorage.removeItem("role");
     return {
         type: "LOGOUT"
     }
@@ -28,7 +30,7 @@ export const logout = () => {
 
 export const register = (user: User): AppThunk => async dispatch => {
     user.role = "USER";
-    const res = await axios.post('user', user);
+    const res = await axios.post<User>('user', user);
     dispatch({
         type: "REGISTER",
         payload: res.status === 200
@@ -39,15 +41,16 @@ export const register = (user: User): AppThunk => async dispatch => {
 }
 
 export const myProfile = (): AppThunk => async dispatch => {
-    const {data} = await token.get('user/my-profile');
+    const {data} = await token.get<User>('user/my-profile');
     dispatch({
         type: "MY_PROFILE",
         payload: data
     })
+    localStorage.getItem("jwt") ? localStorage.setItem("role", data.role!) : sessionStorage.setItem("role", data.role!);
 }
 
 export const updateProfile = (user:User): AppThunk => async dispatch => {
-    const {data} = await token.put('user', user);
+    const {data} = await token.put<User>('user', user);
     dispatch({
         type: "UPDATE_PROFILE",
         payload: data

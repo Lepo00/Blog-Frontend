@@ -1,7 +1,10 @@
-import {isLoggedIn} from './isLogged';
+import { isLoggedIn, isAdmin } from './service';
+import AdminRoute from './AdminRoute';
 import PrivateRoute from './PrivateRoute';
 
-export{
+export {
     isLoggedIn,
-    PrivateRoute
+    isAdmin,
+    PrivateRoute,
+    AdminRoute
 }

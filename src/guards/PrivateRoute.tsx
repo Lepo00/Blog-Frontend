@@ -1,6 +1,6 @@
 import React from "react";
 import { Route, Redirect } from "react-router-dom";
-import { isLoggedIn } from "./isLogged";
+import { isLoggedIn } from "./service";
 
 const PrivateRoute: React.FC<{
     component: React.FC;
