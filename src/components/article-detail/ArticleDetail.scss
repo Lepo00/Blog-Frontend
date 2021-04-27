@@ -26,6 +26,9 @@
             font-size: 15px;
         }
     }
+    .tags{
+        padding: 0 30px;
+    }
     .related {
         background-color: var(--invFont);
         height: 100%;
@@ -35,5 +38,19 @@
     }
     .title {
         font-size: 40px;
+    }
+    .ant-tag {
+        box-sizing: border-box;
+        font-size: 18px;
+        font-variant: tabular-nums;
+        line-height: 1.5715;
+        display: inline-block;
+        height: auto;
+        padding: 2px 7px;
+        white-space: nowrap;
+        border-radius: 2px;
+        opacity: 1;
+        transition: all 0.3s;
+        margin: 2px 5px;
     }
 }
