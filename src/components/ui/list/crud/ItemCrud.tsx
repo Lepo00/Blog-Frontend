@@ -3,7 +3,7 @@ import { Button, Tooltip, Modal } from 'antd';
 import { Link } from 'react-router-dom'
 import { Article } from '../../../../models';
 import { DeleteOutlined, SearchOutlined, FormOutlined, ExclamationCircleOutlined } from '@ant-design/icons';
-import { deleteArticle } from '../../../../store/actions';
+import { deleteArticle, myArticles } from '../../../../store/actions';
 import { useDispatch } from 'react-redux';
 const { confirm } = Modal;
 
@@ -28,6 +28,7 @@ const ItemCrud = (props: { article: Article }) => {
 
   function removeArticle(id: number) {
     dispatch(deleteArticle(id));
+    dispatch(myArticles(0,10));
   }
 
   return (

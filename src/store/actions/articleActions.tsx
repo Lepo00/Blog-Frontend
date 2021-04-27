@@ -52,7 +52,6 @@ export const createArticle = (article: FormData): AppThunk => async dispatch => 
 
 export const deleteArticle = (id: number): AppThunk => async dispatch => {
     await axios.delete('article/' + id);
-    dispatch(myArticles(0,10));
     dispatch({
         type: "DELETE_ARTICLE",
     })
