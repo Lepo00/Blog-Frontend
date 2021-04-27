@@ -1,3 +1,45 @@
-.ItemAdmin{
-    
+.ItemAdmin {
+    width: 100%;
+    padding: 0 7%;
+    color: var(--font);
+    .grid-container {
+        background-color: var(--invFont);
+        margin: 15px 0;
+        border-radius: 10px;
+        box-shadow: 5px 5px 15px -3px rgba(0, 0, 0, 0.8);
+    }
+    .img {
+        //background-color: red;
+        padding: 5px 10px;
+        img {
+            height: 100%;
+            width: 100%;
+            border-radius: 15px;
+        }
+    }
+    .text {
+        //background-color: blue;
+        padding: 10px 5px;
+        text-align: justify;
+    }
+    .buttons {
+        padding: 25px 0;
+        border-radius: 10px;
+    }
+    .ant {
+        &-col {
+            height: 100px;
+        }
+        &-btn-circle.ant-btn-lg {
+            min-width: 40px;
+            border-radius: 50%;
+            margin: 5px;
+        }
+        &-typography-ellipsis-multiple-line{
+            color: var(--font);
+        }
+        &-divider-vertical{
+            height: 100px;
+        }
+    }
 }

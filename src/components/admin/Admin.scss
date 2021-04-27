@@ -1,3 +1,11 @@
 .Admin{
-    
+    position: absolute;
+    min-height: 90vh;
+    width: 100%;
+    background-color: var(--bg);
+    color: var(--font);
+    padding-top: 10px;
+    h1 {
+        font-size: 30px;
+    }
 }
