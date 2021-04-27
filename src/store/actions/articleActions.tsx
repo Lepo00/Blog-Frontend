@@ -130,3 +130,10 @@ export const pendingArticles = (): AppThunk => async dispatch => {
         })
     }
 }
+
+export const approveArticle = (id: number): AppThunk => async dispatch => {
+    await axios.put('article/approve/'+id);
+    dispatch({
+        type: "APPROVE_ARTICLE"
+    })
+}
