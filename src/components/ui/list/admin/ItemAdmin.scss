@@ -8,8 +8,10 @@
         border-radius: 10px;
         box-shadow: 5px 5px 15px -3px rgba(0, 0, 0, 0.8);
     }
+    h3 {
+        margin: 0;
+    }
     .img {
-        //background-color: red;
         padding: 5px 10px;
         img {
             height: 100%;
@@ -18,13 +20,13 @@
         }
     }
     .text {
-        //background-color: blue;
-        padding: 10px 5px;
+        padding: 5px;
         text-align: justify;
     }
     .buttons {
-        padding: 25px 0;
         border-radius: 10px;
+        max-width: 100px;
+        height: auto !important;
     }
     .ant {
         &-col {
@@ -35,11 +37,12 @@
             border-radius: 50%;
             margin: 5px;
         }
-        &-typography-ellipsis-multiple-line{
+        &-typography-ellipsis-multiple-line {
             color: var(--font);
         }
-        &-divider-vertical{
+        &-divider-vertical {
             height: 100px;
+            margin: 0;
         }
     }
 }
