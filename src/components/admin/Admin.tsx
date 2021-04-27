@@ -7,15 +7,14 @@ import { pendingArticles } from '../../store/actions';
 
 const Admin = () => {
   const dispatch = useDispatch();
-  const { articles } = useSelector((state: RootState) => state.articleReducers);
   useEffect(() => { dispatch(pendingArticles()) }, [dispatch]);
+  const { articles } = useSelector((state: RootState) => state.articleReducers);
+
   return (
     <div className="Admin">
       <h1>Articoli in attesa di approvazione</h1>
-      {articles.map((article) => (
-        <div>
+      {articles?.map((article) => (
           <ItemAdmin {...article} key={article.id}/>
-        </div>
       ))}
     </div>
   )

@@ -123,7 +123,6 @@ export const pendingArticles = (): AppThunk => async dispatch => {
             type: "PENDING_ARTICLES",
             payload: data
         })
-        dispatch(myArticlesSize())
     } catch {
         dispatch({
             type: "PENDING_ARTICLES",

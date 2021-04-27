@@ -9,10 +9,10 @@ const initialState: ArticleState = {
 const articleReducer = (state = initialState, action: Action) => {
     switch (action.type) {
         case "MY_ARTICLES":
+        case "PENDING_ARTICLES":
         case "FIRST_ARTICLES":
         case "ARTICLES_BY_CATEGORY":
         case "SEARCH_ARTICLES":
-        case "PENDING_ARTICLES":
             return {
                 ...state,
                 articles: action.payload as Article[],

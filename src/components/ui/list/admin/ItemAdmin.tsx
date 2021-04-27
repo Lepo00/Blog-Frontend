@@ -14,8 +14,9 @@ const ItemAdmin = (article: Article) => {
   const dispatch = useDispatch();
 
   function removeArticle(id: number) {
-    dispatch(deleteArticle(id));
-    dispatch(pendingArticles());
+    Promise.resolve(
+      dispatch(deleteArticle(id)))
+      .then(() => dispatch(pendingArticles()));
   }
 
   return (
@@ -24,7 +25,7 @@ const ItemAdmin = (article: Article) => {
         <Row wrap={false} align="middle">
           <Col flex="20%" className="img">
             <Link to={"/article/" + article.id}>
-              <img src={"http://localhost:8080/blog/image/display/"+article.id} alt="" />
+              <img src={"http://localhost:8080/blog/image/display/" + article.id} alt="" />
             </Link>
           </Col>
           <Link to={"/article/" + article.id}>
@@ -41,7 +42,7 @@ const ItemAdmin = (article: Article) => {
               <Button {...style} icon={<CheckOutlined />} />
             </Tooltip>
             <Tooltip title="Contrassegna articolo come spam" color="red">
-              <Button danger {...style} icon={<CloseOutlined />} onClick={()=>removeArticle(article.id!)} />
+              <Button danger {...style} icon={<CloseOutlined />} onClick={() => removeArticle(article.id!)} />
             </Tooltip>
           </Col>
         </Row>
